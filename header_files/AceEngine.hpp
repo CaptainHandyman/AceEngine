@@ -28,7 +28,7 @@ enum
 {
 /* REMOVE ALL FLAGS */ ACE_WINDOW_NO_FLAGS = 1 << 0,
 /* FULLSCREEN       */ ACE_WINDOW_FULLSCREEN = 1 << 1,
-/* RESIZABLE        */    ACE_WINDOW_RESIZABLE = 1 << 2
+/* RESIZABLE        */ ACE_WINDOW_RESIZABLE = 1 << 2
 };
 /* WINDOW FLAGS */ /* ------------------------------- */
 
