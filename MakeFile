@@ -1,0 +1,34 @@
+CXX = g++
+CXX_FLAGS = -std=c++11 -Wall -Wextra
+
+LIBS = -lSDL2 \
+	   -lSDL2_image \
+	   -lSDL2_ttf \
+	   -lSDL2_mixer \
+	   -lGL
+
+SOURCE_FILES = source_files/*.cpp
+HEADER_FILES = header_files/*.hpp \
+			   header_files/*.imp
+
+O_FILES = *.o
+LIB = libAceEngine.so
+
+LIB_PATH = /usr/lib/x86_64-linux-gnu/
+ENGINE_PATH = /usr/include/AceEngine
+
+all:
+	$(CXX) $(CXX_FLAGS) -c -fPIC $(SOURCE_FILES) $(LIBS)
+	$(CXX) $(CXX_FLAGS) -shared $(O_FILES) -o $(LIB)
+	make -f MakeFile clean
+
+install:
+	mkdir $(ENGINE_PATH)
+	mv $(LIB) $(LIB_PATH)
+	cp -r $(HEADER_FILES) $(ENGINE_PATH)
+
+clean:
+	rm -rf *.o
+
+uninstall:
+	sudo rm -rf $(LIB_PATH)/$(LIB) $(ENGINE_PATH)
