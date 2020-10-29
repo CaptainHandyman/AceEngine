@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-29 12:46:27
+ * @modify date 2020-10-29 18:39:57
  * @version 0.02
  */
 
@@ -49,16 +49,16 @@ void window::create(ACE_STRING title, uint16_t position, vector2<int> size)
         _window_data.bounds.y = 0;
         break;
     case ACE_WINDOW_POS_TOP_RIGHT:
-        _window_data.bounds.x = screen::get_size().x;
+        _window_data.bounds.x = screen::get_size().x - size.x;
         _window_data.bounds.y = 0;
         break;
     case ACE_WINDOW_POS_BOTTOM_LEFT:
         _window_data.bounds.x = 0;
-        _window_data.bounds.y = screen::get_size().y;
+        _window_data.bounds.y = screen::get_size().y - size.y;
         break;
     case ACE_WINDOW_POS_BOTTOM_RIGHT:
-        _window_data.bounds.x = screen::get_size().x;
-        _window_data.bounds.y = screen::get_size().y;
+        _window_data.bounds.x = screen::get_size().x - size.x;
+        _window_data.bounds.y = screen::get_size().y - size.y;
         break;
     }
 
