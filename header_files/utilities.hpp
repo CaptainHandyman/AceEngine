@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
- * @modify date 2020-10-28 14:47:31
- * @version 0.01
+ * @modify date 2020-10-29 12:46:11
+ * @version 0.02
  */
 
 #ifndef TOOLS_HPP
@@ -15,6 +15,47 @@
 
 namespace ACE
 {
+    template <typename T>
+    class vector2
+    {
+    public:
+        vector2();
+
+        vector2(T x, T y);
+
+        T x = 0, y = 0;
+    };
+
+    template <typename T>
+    class vector4
+    {
+    public:
+        vector4();
+
+        vector4(T x, T y,
+                T w, T h);
+
+        T x = 0, y = 0,
+          w = 0, h = 0;
+    };
+
+    class rgba_color
+    {
+    public:
+        rgba_color();
+
+        rgba_color(uint16_t r, uint16_t g,
+                   uint16_t b, uint16_t a);
+
+        uint16_t r = 0, g = 0,
+                 b = 0, a = 0;
+    };
+
+    class screen
+    {
+    public:
+        static vector2<uint32_t> get_size();
+    };
 
 #include "utilities.imp"
 

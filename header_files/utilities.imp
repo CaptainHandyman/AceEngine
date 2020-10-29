@@ -2,6 +2,29 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:33
- * @modify date 2020-10-28 14:48:33
- * @version 0.01
+ * @modify date 2020-10-28 22:46:14
+ * @version 0.02
  */
+
+template <typename T>
+vector2<T>::vector2() {}
+
+template <typename T>
+vector2<T>::vector2(T x, T y)
+{
+    this->x = x;
+    this->y = y;
+}
+
+template <typename T>
+vector4<T>::vector4() {}
+
+template <typename T>
+vector4<T>::vector4(T x, T y,
+                    T w, T h)
+{
+    this->x = x;
+    this->y = y;
+    this->w = w;
+    this->h = h;
+}
