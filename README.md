@@ -6,3 +6,5 @@
 * ``` sudo ./install.sh ```
 ### Uninstallation:
 * ``` sudo make -f MakeFile uninstall ```
+### Compilation:
+* ``` g++ main.cpp -lAceEngine ```
