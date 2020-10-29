@@ -7,7 +7,12 @@
 ### Uninstallation:
 * ``` sudo make -f MakeFile uninstall ```
 ### Compilation:
-* ``` g++ file.cpp -lAceEngine ```
+``` 
+g++ file.cpp -lAceEngine -lSDl2 \
+                         -lSDL2_image \
+                         -lSDL2_ttf -lGL 
+```
+
 ---
 **Contacts:**
 * Mail: alexandralibekov@yahoo.com
