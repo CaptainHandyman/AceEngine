@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-29 18:39:53
+ * @modify date 2020-10-29 20:03:40
  * @version 0.02
  */
 
@@ -42,12 +42,12 @@ namespace ACE
         /*
          * with this function you can initialize OpenGL.
          * OpenGL is used to draw objects.
+         * by default OpenGL is initialized when the window is created!
          */
         void init_gl();
 
         /*
          * with this function you can create a window.
-         * 
          * in bounds you need to type position and size,
          * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height));
          */
