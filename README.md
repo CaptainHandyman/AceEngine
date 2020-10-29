@@ -9,6 +9,6 @@
 ### Compilation:
 * ``` g++ file.cpp -lAceEngine ```
 ---
-<p> Contact information: </p>
+<p> Contacts: </p>
 
 * Mail: alexandralibekov@yahoo.com
