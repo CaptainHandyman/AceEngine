@@ -10,5 +10,4 @@
 * ``` g++ file.cpp -lAceEngine ```
 ---
 **Contacts:**
-
 * Mail: alexandralibekov@yahoo.com
