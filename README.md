@@ -8,3 +8,7 @@
 * ``` sudo make -f MakeFile uninstall ```
 ### Compilation:
 * ``` g++ file.cpp -lAceEngine ```
+---
+<p> Contact information: </p>
+
+* Mail: alexandralibekov@yahoo.com
