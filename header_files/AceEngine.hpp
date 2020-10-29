@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-29 20:03:40
- * @version 0.02
+ * @modify date 2020-10-29 23:28:59
+ * @version 0.025
  */
 
 #ifndef ACEENGINE_HPP
@@ -60,6 +60,8 @@ namespace ACE
          */
         void create(ACE_STRING title, uint16_t position, vector2<int> size);
 
+        void set_fill_color(rgba_color fill_color);
+
         window &operator=(SDL_Window *_window);
 
         bool operator==(SDL_Window *_window);
@@ -71,6 +73,16 @@ namespace ACE
 
         // with this boolean you can chek if the window is open or not.
         bool is_open();
+
+        /**/ void clear();
+        /*
+         * clear and display functions are requ-
+         * ired for the drawing function to work!
+        */
+        /**/ void display();
+
+        // this function translates current window to sdl!
+        SDL_Window *translate_to_sdl();
 
     private:
         window_data _window_data;

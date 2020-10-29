@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
- * @modify date 2020-10-29 12:46:11
- * @version 0.02
+ * @modify date 2020-10-29 23:29:10
+ * @version 0.025
  */
 
 #ifndef TOOLS_HPP
@@ -43,6 +43,9 @@ namespace ACE
     {
     public:
         rgba_color();
+
+        rgba_color(uint16_t r, uint16_t g,
+                   uint16_t b);
 
         rgba_color(uint16_t r, uint16_t g,
                    uint16_t b, uint16_t a);

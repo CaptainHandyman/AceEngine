@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-29 18:39:57
- * @version 0.02
+ * @modify date 2020-10-29 23:29:16
+ * @version 0.025
  */
 
 #include "../header_files/AceEngine.hpp"
@@ -72,6 +72,11 @@ void window::create(ACE_STRING title, uint16_t position, vector2<int> size)
     _window_data.bounds.h = size.y;
 }
 
+void window::set_fill_color(rgba_color fill_color)
+{
+    _window_data.fill_color = fill_color;
+}
+
 window &window::operator=(SDL_Window *_window)
 {
     this->_window = _window;
@@ -107,4 +112,27 @@ bool window::quit(SDL_Event event)
 bool window::is_open()
 {
     return _window != NULL;
+}
+
+void window::clear()
+{
+    glClearColor(_window_data.fill_color.r != 0 ? _window_data.fill_color.r / 255 : 0,
+                 _window_data.fill_color.g != 0 ? _window_data.fill_color.g / 255 : 0,
+                 _window_data.fill_color.b != 0 ? _window_data.fill_color.b / 255 : 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glViewport(0, 0, _window_data.bounds.w, _window_data.bounds.h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0, _window_data.bounds.w, _window_data.bounds.h, 0, -10, 10);
+}
+
+void window::display()
+{
+    SDL_GL_SwapWindow(_window);
+}
+
+SDL_Window *window::translate_to_sdl()
+{
+    return _window;
 }

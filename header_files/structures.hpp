@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:19
  * @modify date 2020-10-28 22:46:06
- * @version 0.02
+ * @version 0.025
  */
 
 #ifndef STRUCTURES_HPP
