@@ -32,43 +32,53 @@ enum
 
 namespace ACE
 {
+    /*
+     * Don't assume that there are no set_size() and set_position() functions for a window,
+     * this is because you can easily set size or position, using SDL2 functions, for example: size -
+     *  - SDL_SetWindowSize(ACE::window::translate_to_sdl(), width, height), position -
+     *  - SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y), thats why there is
+     * translate_to_sdl() function. Or if you want to make window fullscreen, you can type
+     * SDL_SetWindowFullscreen(ACE::window::translate_to_sdl(), SDL_TRUE | SDL_FALSE)
+     * so if you can't find any function here, try to use SDL2 functions, because
+     * I don't want to make copy of SDL2 functions and it's important!
+    */
     class window
     {
     public:
         window();
 
         /*
-         * this function initializes OpenGL.
+         * This function initializes OpenGL.
          * OpenGL is used to draw objects.
-         * by default OpenGL is initialized when the window is created.
+         * By default OpenGL is initialized when the window is created.
          */
         void init_gl();
 
         /*
-         * this function creates a window.
-         * in bounds you need to type position and size,
+         * This function creates a window.
+         * In bounds you need to type position and size,
          * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height))
          */
         void create(ACE_STRING title, vector4<int> bounds);
 
         /*
-         * this function creates a window,
+         * This function creates a window,
          * but with ready-made positions, like: centered,
          * top left, top right, bottom left, bottom right.
          */
         void create(ACE_STRING title, uint16_t position, vector2<int> size);
 
         /*
-         * this function sets flags for the window,
+         * This function sets flags for the window,
          * like: set_flags(ACE_WINDOW_RESIZABLE |
          *                 ACE_WINDOW_FULLSCREEN).
-         * with ACE_WINDOW_NO_FLAGS, you can cancel all flags, you have set.
+         * With ACE_WINDOW_NO_FLAGS, you can cancel all flags, you have set.
          */
         void set_flags(ACE_FLAGS window_flags);
 
         void set_fill_color(rgba_color fill_color);
 
-        // this function closes the window.
+        // This function closes the window.
         void close();
 
         window &operator=(SDL_Window *_window);
@@ -77,23 +87,23 @@ namespace ACE
 
         bool operator!=(SDL_Window *_window);
 
-        // this boolean checks if the window tried to close or not.
+        // This boolean checks if the window tried to close or not.
         bool quit(SDL_Event event);
 
-        // this boolean cheks if the window is open or not.
+        // This boolean checks if the window is open or not.
         bool is_open();
 
         /**/ void clear();
         /*
-         * clear and display functions are
+         * Clear and display functions are
          * required for the drawing to work.
         */
         /**/ void display();
 
-        // this function translates current window to SDL2.
+        // This function translates current window to SDL2.
         SDL_Window *translate_to_sdl();
 
-        // this function returns OpenGL context.
+        // This function returns OpenGL context.
         SDL_GLContext get_gl_context();
 
     private:
