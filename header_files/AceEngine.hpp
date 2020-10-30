@@ -85,8 +85,8 @@ namespace ACE
 
         /**/ void clear();
         /*
-         * clear and display functions are requ-
-         * ired for the drawing to work.
+         * clear and display functions are
+         * required for the drawing to work.
         */
         /**/ void display();
 
@@ -94,9 +94,11 @@ namespace ACE
         SDL_Window *translate_to_sdl();
 
     private:
-        window_data _window_data;
-
-        SDL_Window *_window;
+        // attributes for the window
+        /**/ window_data _window_data;
+        /**/
+        /**/ SDL_Window *_window;
+        // attributes for the window
     };
 } // namespace ACE
 
