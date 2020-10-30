@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-30 23:38:35
+ * @modify date 2020-10-31 00:03:23
  * @version 0.025
  */
 
@@ -34,7 +34,7 @@ namespace ACE
 {
     /*
      * Don't assume that there are no set_size() and set_position() functions for a window,
-     * this is because you can easily set size or position, using SDL2 functions, for example: size -
+     * this is because you can easily set size and position, using SDL2 functions, for example: size -
      *  - SDL_SetWindowSize(ACE::window::translate_to_sdl(), width, height), position -
      *  - SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y), thats why there is
      * translate_to_sdl() function. Or if you want to make window fullscreen, you can type
