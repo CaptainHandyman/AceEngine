@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
- * @modify date 2020-10-30 20:59:56
+ * @modify date 2020-10-30 21:43:51
  * @version 0.025
  */
 
@@ -12,6 +12,8 @@
 #include "includes.hpp"
 
 #define ACE_STRING const char *
+
+typedef uint16_t ACE_FLAGS;
 
 namespace ACE
 {

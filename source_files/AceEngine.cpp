@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-30 21:00:15
+ * @modify date 2020-10-30 21:43:54
  * @version 0.025
  */
 
@@ -72,6 +72,23 @@ void window::create(ACE_STRING title, uint16_t position, vector2<int> size)
     _window_data.bounds.h = size.y;
 }
 
+void window::set_flags(ACE_FLAGS window_flags)
+{
+    switch (window_flags)
+    {
+    case ACE_WINDOW_NO_FLAGS:
+        SDL_SetWindowFullscreen(_window, SDL_FALSE);
+        SDL_SetWindowResizable(_window, SDL_FALSE);
+        break;
+    case ACE_WINDOW_FULLSCREEN:
+        SDL_SetWindowFullscreen(_window, SDL_TRUE);
+        break;
+    case ACE_WINDOW_RESIZABLE:
+        SDL_SetWindowResizable(_window, SDL_TRUE);
+        break;
+    }
+}
+
 void window::set_fill_color(rgba_color fill_color)
 {
     _window_data.fill_color = fill_color;
@@ -120,8 +137,16 @@ bool window::is_open()
     return _window != NULL;
 }
 
+void update_window_data(SDL_Window *_window, window_data &_window_data)
+{
+    SDL_GetWindowSize(_window, &_window_data.bounds.w, &_window_data.bounds.h);
+    SDL_GetWindowPosition(_window, &_window_data.bounds.x, &_window_data.bounds.y);
+}
+
 void window::clear()
 {
+    update_window_data(_window, _window_data);
+
     glClearColor(_window_data.fill_color.r != 0 ? _window_data.fill_color.r / 255 : 0,
                  _window_data.fill_color.g != 0 ? _window_data.fill_color.g / 255 : 0,
                  _window_data.fill_color.b != 0 ? _window_data.fill_color.b / 255 : 0, 0);

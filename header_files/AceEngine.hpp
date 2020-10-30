@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-30 20:59:52
+ * @modify date 2020-10-30 21:48:33
  * @version 0.025
  */
 
@@ -20,8 +20,6 @@
 #define /* bottom left  */ ACE_WINDOW_POS_BOTTOM_LEFT 0x3u
 #define /* bottom right */ ACE_WINDOW_POS_BOTTOM_RIGHT 0x4u
 // window positions
-
-typedef uint16_t ACE_FLAGS;
 
 // window flags
 enum
@@ -47,7 +45,7 @@ namespace ACE
         void init_gl();
 
         /*
-         * function creates a window.
+         * this function creates a window.
          * in bounds you need to type position and size,
          * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height))
          */
@@ -59,6 +57,14 @@ namespace ACE
          * top left, top right, bottom left, bottom right.
          */
         void create(ACE_STRING title, uint16_t position, vector2<int> size);
+
+        /*
+         * with this function you can set flags for the window,
+         * like: set_flags(ACE_WINDOW_RESIZABLE |
+         *                 ACE_WINDOW_FULLSCREEN).
+         * with ACE_WINDOW_NO_FLAGS, you can cancel all flags, you have set.
+         */
+        void set_flags(ACE_FLAGS window_flags);
 
         void set_fill_color(rgba_color fill_color);
 
@@ -80,7 +86,7 @@ namespace ACE
         /**/ void clear();
         /*
          * clear and display functions are requ-
-         * ired for the drawing function to work.
+         * ired for the drawing to work.
         */
         /**/ void display();
 
