@@ -15,8 +15,7 @@ int main()
 {
     window.create("window", ACE_WINDOW_POS_CENTERED, ACE::vector2<int>(800, 800));
 
-    while (window.is_open() ||
-           /* you can also check with this */ window != NULL)
+    while (window.is_open())
     {
         while (SDL_PollEvent(&event))
         {
