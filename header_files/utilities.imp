@@ -17,6 +17,29 @@ vector2<T>::vector2(T x, T y)
 }
 
 template <typename T>
+void vector2<T>::translate_to_vertex()
+{
+    glVertex2f(x, y);
+}
+
+template <typename T>
+vector3<T>::vector3() {}
+
+template <typename T>
+vector3<T>::vector3(T x, T y, T z)
+{
+    this->x = x;
+    this->y = y;
+    this->z = z;
+}
+
+template <typename T>
+void vector3<T>::translate_to_vertex()
+{
+    glVertex3f(x, y, z);
+}
+
+template <typename T>
 vector4<T>::vector4() {}
 
 template <typename T>

@@ -77,6 +77,12 @@ void window::set_fill_color(rgba_color fill_color)
     _window_data.fill_color = fill_color;
 }
 
+void window::close()
+{
+    SDL_DestroyWindow(_window);
+    _window = NULL;
+}
+
 window &window::operator=(SDL_Window *_window)
 {
     this->_window = _window;

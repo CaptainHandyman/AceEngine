@@ -40,21 +40,21 @@ namespace ACE
         window();
 
         /*
-         * with this function you can initialize OpenGL.
+         * this function initializes OpenGL.
          * OpenGL is used to draw objects.
-         * by default OpenGL is initialized when the window is created!
+         * by default OpenGL is initialized when the window is created.
          */
         void init_gl();
 
         /*
-         * with this function you can create a window.
+         * function creates a window.
          * in bounds you need to type position and size,
          * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height));
          */
         void create(ACE_STRING title, vector4<int> bounds);
 
         /*
-         * with this function you can create a window,
+         * this function creates a window,
          * but with ready-made positions, like: centered,
          * top left, top right, bottom left, bottom right.
          */
@@ -62,26 +62,29 @@ namespace ACE
 
         void set_fill_color(rgba_color fill_color);
 
+        // this function closes the window.
+        void close();
+
         window &operator=(SDL_Window *_window);
 
         bool operator==(SDL_Window *_window);
 
         bool operator!=(SDL_Window *_window);
 
-        // with this boolean you can check if the window tried to close or not.
+        // this boolean checks if the window tried to close or not.
         bool quit(SDL_Event event);
 
-        // with this boolean you can chek if the window is open or not.
+        // this boolean cheks if the window is open or not.
         bool is_open();
 
         /**/ void clear();
         /*
          * clear and display functions are requ-
-         * ired for the drawing function to work!
+         * ired for the drawing function to work.
         */
         /**/ void display();
 
-        // this function translates current window to sdl!
+        // this function translates current window to sdl.
         SDL_Window *translate_to_sdl();
 
     private:

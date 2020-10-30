@@ -23,7 +23,22 @@ namespace ACE
 
         vector2(T x, T y);
 
+        void translate_to_vertex();
+
         T x = 0, y = 0;
+    };
+
+    template <typename T>
+    class vector3
+    {
+    public:
+        vector3();
+
+        vector3(T x, T y, T z);
+
+        void translate_to_vertex();
+
+        T x = 0, y = 0, z = 0;
     };
 
     template <typename T>
