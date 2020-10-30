@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-31 00:52:06
+ * @modify date 2020-10-31 00:52:51
  * @version 0.025
  */
 
@@ -25,7 +25,6 @@ enum
     ACE_WINDOW_FULLSCREEN = 1 << 1,
     ACE_WINDOW_RESIZABLE = 1 << 2
 };
-// window flags
 
 namespace ACE
 {
