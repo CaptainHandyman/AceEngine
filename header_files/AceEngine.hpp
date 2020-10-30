@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-30 21:48:33
+ * @modify date 2020-10-30 23:38:35
  * @version 0.025
  */
 
@@ -93,6 +93,7 @@ namespace ACE
         // this function translates current window to SDL2.
         SDL_Window *translate_to_sdl();
 
+        // this function returns OpenGL context.
         SDL_GLContext get_gl_context();
 
     private:

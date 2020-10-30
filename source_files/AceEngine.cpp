@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-30 21:43:54
+ * @modify date 2020-10-30 23:38:31
  * @version 0.025
  */
 
@@ -81,6 +81,8 @@ void window::set_flags(ACE_FLAGS window_flags)
         SDL_SetWindowResizable(_window, SDL_FALSE);
         break;
     case ACE_WINDOW_FULLSCREEN:
+        SDL_SetWindowSize(_window, screen::get_size().x,
+                          screen::get_size().y);
         SDL_SetWindowFullscreen(_window, SDL_TRUE);
         break;
     case ACE_WINDOW_RESIZABLE:
