@@ -49,7 +49,7 @@ namespace ACE
         /*
          * function creates a window.
          * in bounds you need to type position and size,
-         * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height));
+         * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height))
          */
         void create(ACE_STRING title, vector4<int> bounds);
 

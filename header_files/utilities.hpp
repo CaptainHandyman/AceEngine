@@ -23,6 +23,7 @@ namespace ACE
 
         vector2(T x, T y);
 
+        // this function translates this vector to glVertex2f(x, y)
         void translate_to_vertex();
 
         T x = 0, y = 0;
@@ -36,6 +37,7 @@ namespace ACE
 
         vector3(T x, T y, T z);
 
+        // this function translates this vector to glVertex3f(x, y)
         void translate_to_vertex();
 
         T x = 0, y = 0, z = 0;
