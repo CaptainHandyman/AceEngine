@@ -90,8 +90,10 @@ namespace ACE
         */
         /**/ void display();
 
-        // this function translates current window to sdl.
+        // this function translates current window to SDL2.
         SDL_Window *translate_to_sdl();
+
+        SDL_GLContext get_gl_context();
 
     private:
         // attributes for the window

@@ -167,3 +167,8 @@ SDL_Window *window::translate_to_sdl()
 {
     return _window;
 }
+
+SDL_GLContext window::get_gl_context()
+{
+    return _window_data.gl_context;
+}
