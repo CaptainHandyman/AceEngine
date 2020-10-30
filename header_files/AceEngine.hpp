@@ -85,8 +85,8 @@ namespace ACE
 
         /**/ void clear();
         /*
-         * clear and display functions are requ-
-         * ired for the drawing to work.
+         * clear and display functions are
+         * required for the drawing to work.
         */
         /**/ void display();
 
