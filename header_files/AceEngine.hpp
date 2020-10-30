@@ -47,7 +47,7 @@ namespace ACE
         void init_gl();
 
         /*
-         * function creates a window.
+         * this function creates a window.
          * in bounds you need to type position and size,
          * like: ACE::vector4<int>(0(x), 0(y), 800(width), 800(height))
          */
