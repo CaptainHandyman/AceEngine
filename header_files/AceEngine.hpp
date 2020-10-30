@@ -40,7 +40,7 @@ namespace ACE
      * translate_to_sdl() function. Or if you want to make window fullscreen, you can type
      * SDL_SetWindowFullscreen(ACE::window::translate_to_sdl(), SDL_TRUE | SDL_FALSE)
      * so if you can't find any function here, try to use SDL2 functions, because
-     * I don't want to make copy of SDL2 functions and it's important!
+     * I don't want to copy SDL2 functions and it's important!
     */
     class window
     {
