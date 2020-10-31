@@ -84,6 +84,8 @@ namespace ACE
 
         void set_rotation(float angle), rotate(float angle);
 
+        void set_center(ACE::vector2<float> center);
+
         vector4<float> get_bounds();
 
     private:

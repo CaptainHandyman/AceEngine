@@ -24,6 +24,7 @@ namespace ACE
 
     struct polygon_data
     {
+        vector2<float> center;
         vector4<float> bounds;
         std::vector<vector2<float>> point_position;
         rgba_color fill_color;

@@ -212,9 +212,11 @@ void polygon::begin()
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        glTranslatef(_polygon_data.bounds.x, _polygon_data.bounds.y, 0);
+        glTranslatef(_polygon_data.bounds.x + _polygon_data.center.x,
+                     _polygon_data.bounds.y + _polygon_data.center.y, 0);
         glRotatef(_polygon_data.angle, 0, 0, 1);
-        glTranslatef(-_polygon_data.bounds.x, -_polygon_data.bounds.y, 0);
+        glTranslatef(-(_polygon_data.bounds.x + _polygon_data.center.x),
+                     -(_polygon_data.bounds.y + _polygon_data.center.y), 0);
 
         glTranslatef(_polygon_data.bounds.x,
                      _polygon_data.bounds.y, 0);
@@ -291,6 +293,11 @@ void polygon::set_rotation(float angle)
 void polygon::rotate(float angle)
 {
     _polygon_data.angle += angle;
+}
+
+void polygon::set_center(vector2<float> center)
+{
+    _polygon_data.center = center;
 }
 
 vector4<float> polygon::get_bounds()
