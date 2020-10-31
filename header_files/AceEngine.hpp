@@ -86,6 +86,8 @@ namespace ACE
 
         void set_center(ACE::vector2<float> center);
 
+        void squeeze(vector2<float> sides);
+
         vector4<float> get_bounds();
 
     private:

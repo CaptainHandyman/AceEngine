@@ -300,6 +300,23 @@ void polygon::set_center(vector2<float> center)
     _polygon_data.center = center;
 }
 
+void polygon::squeeze(vector2<float> sides)
+{
+    for (uint64_t i = 0; i < _polygon_data.point_position.size(); i++)
+    {
+        _polygon_data.point_position.at(i).x += std::abs(sides.x);
+        _polygon_data.point_position.at(i).y += std::abs(sides.y);
+        _polygon_data.bounds.w = std::max(_polygon_data.point_position.at(i).x,
+                                          _polygon_data.bounds.w);
+        _polygon_data.bounds.h = std::max(_polygon_data.point_position.at(i).y,
+                                          _polygon_data.bounds.h);
+    }
+    if (_polygon_data.bounds.x != 0)
+        _polygon_data.bounds.x -= 0.02;
+    if (_polygon_data.bounds.y != 0)
+        _polygon_data.bounds.y -= 0.02;
+}
+
 vector4<float> polygon::get_bounds()
 {
     return _polygon_data.bounds;
