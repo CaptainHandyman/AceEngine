@@ -2,13 +2,15 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-31 09:46:09
- * @version 0.025
+ * @modify date 2020-10-31 23:05:24
+ * @version 0.03
  */
 
 #include "../header_files/AceEngine.hpp"
 #include <stdexcept>
 using namespace ACE;
+
+bool CAN_DRAW_OBJECTS = false;
 
 window::window()
 {
@@ -158,10 +160,14 @@ void window::clear()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, _window_data.bounds.w, _window_data.bounds.h, 0, -10, 10);
+
+    CAN_DRAW_OBJECTS = true;
 }
 
 void window::display()
 {
+    CAN_DRAW_OBJECTS = false;
+
     SDL_GL_SwapWindow(_window);
 }
 
@@ -175,6 +181,11 @@ SDL_GLContext window::get_gl_context()
     return _window_data.gl_context;
 }
 
+vector4<int> window::get_bounds()
+{
+    return _window_data.bounds;
+}
+
 void polygon::set_point_count(uint64_t count)
 {
     for (int i = 0; i < count; i++)
@@ -184,6 +195,9 @@ void polygon::set_point_count(uint64_t count)
 void polygon::set_point_position(uint64_t id, vector2<float> position)
 {
     _polygon_data.point_position.at(id) = position;
+
+    _polygon_data.bounds.w = std::max(position.x, _polygon_data.bounds.w);
+    _polygon_data.bounds.h = std::max(position.y, _polygon_data.bounds.h);
 }
 
 void polygon::set_fill_color(rgba_color fill_color)
@@ -193,24 +207,35 @@ void polygon::set_fill_color(rgba_color fill_color)
 
 void polygon::begin()
 {
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    if (CAN_DRAW_OBJECTS)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glTranslatef(_polygon_data.position.x,
-                 _polygon_data.position.y, 0);
-    glBegin(GL_POLYGON);
+        glTranslatef(_polygon_data.bounds.x, _polygon_data.bounds.y, 0);
+        glRotatef(_polygon_data.angle, 0, 0, 1);
+        glTranslatef(-_polygon_data.bounds.x, -_polygon_data.bounds.y, 0);
+
+        glTranslatef(_polygon_data.bounds.x,
+                     _polygon_data.bounds.y, 0);
+        glBegin(GL_POLYGON);
+    }
 }
 
 void polygon::end()
 {
-    glEnd();
+    if (CAN_DRAW_OBJECTS)
+    {
+        glEnd();
 
-    glDisable(GL_BLEND);
+        glDisable(GL_BLEND);
+    }
 }
 
 void polygon::set_position(vector2<float> position)
 {
-    _polygon_data.position = position;
+    _polygon_data.bounds.x = position.x;
+    _polygon_data.bounds.y = position.y;
 }
 
 void polygon::translate_point_to_vertex(uint64_t id)
@@ -256,4 +281,19 @@ void polygon::show_filled()
     end();
 
     glPopMatrix();
+}
+
+void polygon::set_rotation(float angle)
+{
+    _polygon_data.angle = angle;
+}
+
+void polygon::rotate(float angle)
+{
+    _polygon_data.angle += angle;
+}
+
+vector4<float> polygon::get_bounds()
+{
+    return _polygon_data.bounds;
 }

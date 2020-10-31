@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-31 09:46:01
+ * @modify date 2020-10-31 23:05:11
  * @version 0.03
  */
 
@@ -58,10 +58,10 @@ namespace ACE
 
         SDL_GLContext get_gl_context();
 
-    private:
-        window_data _window_data;
+        vector4<int> get_bounds();
 
-        SDL_Window *_window;
+    private:
+        window_data _window_data; SDL_Window *_window;
     } /* class window */;
 
     class polygon
@@ -81,6 +81,10 @@ namespace ACE
         void translate_point_to_vertex(uint64_t id);
 
         void show_unfilled(), show_filled();
+
+        void set_rotation(float angle), rotate(float angle);
+
+        vector4<float> get_bounds();
 
     private:
         polygon_data _polygon_data;

@@ -1,3 +1,11 @@
+/**
+ * @author Alexandr
+ * @email alexandralibekov@yahoo.com
+ * @create date 2020-10-31 23:04:46
+ * @modify date 2020-10-31 23:04:46
+ * @version 0.03
+ */
+
 #include <AceEngine/AceEngine.hpp>
 
 ACE::window window;

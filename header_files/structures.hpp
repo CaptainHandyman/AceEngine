@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:19
- * @modify date 2020-10-31 09:46:06
- * @version 0.025
+ * @modify date 2020-10-31 23:05:20
+ * @version 0.03
  */
 
 #ifndef STRUCTURES_HPP
@@ -25,9 +25,9 @@ namespace ACE
     struct polygon_data
     {
         vector4<float> bounds;
-        vector2<float> position;
         std::vector<vector2<float>> point_position;
         rgba_color fill_color;
+        float angle = 0;
     };
 } // namespace ACE
 
