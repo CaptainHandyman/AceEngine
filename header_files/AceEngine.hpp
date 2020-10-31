@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-31 00:52:51
- * @version 0.025
+ * @modify date 2020-10-31 09:46:01
+ * @version 0.03
  */
 
 #ifndef ACEENGINE_HPP
@@ -37,13 +37,12 @@ namespace ACE
 
         void create(ACE_STRING title, vector4<int> bounds);
 
-        void create(ACE_STRING title, uint16_t position, vector2<int> size);
+        void create(ACE_STRING title, uint16_t position,
+                    vector2<int> size);
 
         void set_flags(ACE_FLAGS window_flags);
 
         void set_fill_color(rgba_color fill_color);
-
-        void close();
 
         window &operator=(SDL_Window *_window);
 
@@ -51,13 +50,9 @@ namespace ACE
 
         bool operator!=(SDL_Window *_window);
 
-        bool quit(SDL_Event event);
+        bool quit(SDL_Event event), is_open();
 
-        bool is_open();
-
-        void clear();
-
-        void display();
+        void clear(), display(), close();
 
         SDL_Window *translate_to_sdl();
 
@@ -67,7 +62,29 @@ namespace ACE
         window_data _window_data;
 
         SDL_Window *_window;
-    };
+    } /* class window */;
+
+    class polygon
+    {
+    public:
+        void set_point_count(uint64_t count);
+
+        void set_point_position(uint64_t id,
+                                vector2<float> position);
+
+        void set_fill_color(rgba_color fill_color);
+
+        void begin(), end();
+
+        void set_position(vector2<float> position);
+
+        void translate_point_to_vertex(uint64_t id);
+
+        void show_unfilled(), show_filled();
+
+    private:
+        polygon_data _polygon_data;
+    } /* class polygon */;
 } // namespace ACE
 
 #endif // ACEENGINE_HPP

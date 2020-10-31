@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-30 23:38:31
+ * @modify date 2020-10-31 09:46:09
  * @version 0.025
  */
 
@@ -173,4 +173,87 @@ SDL_Window *window::translate_to_sdl()
 SDL_GLContext window::get_gl_context()
 {
     return _window_data.gl_context;
+}
+
+void polygon::set_point_count(uint64_t count)
+{
+    for (int i = 0; i < count; i++)
+        _polygon_data.point_position.push_back(vector2<float>(0, 0));
+}
+
+void polygon::set_point_position(uint64_t id, vector2<float> position)
+{
+    _polygon_data.point_position.at(id) = position;
+}
+
+void polygon::set_fill_color(rgba_color fill_color)
+{
+    _polygon_data.fill_color = fill_color;
+}
+
+void polygon::begin()
+{
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glTranslatef(_polygon_data.position.x,
+                 _polygon_data.position.y, 0);
+    glBegin(GL_POLYGON);
+}
+
+void polygon::end()
+{
+    glEnd();
+
+    glDisable(GL_BLEND);
+}
+
+void polygon::set_position(vector2<float> position)
+{
+    _polygon_data.position = position;
+}
+
+void polygon::translate_point_to_vertex(uint64_t id)
+{
+    _polygon_data.point_position.at(id).translate_to_vertex();
+}
+
+void polygon::show_unfilled()
+{
+    glPushMatrix();
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    begin();
+    {
+        glColor4ub(_polygon_data.fill_color.r,
+                   _polygon_data.fill_color.g,
+                   _polygon_data.fill_color.b,
+                   _polygon_data.fill_color.a);
+        for (int i = 0; i < _polygon_data.point_position.size(); i++)
+            translate_point_to_vertex(i);
+    }
+    end();
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    glPopMatrix();
+}
+
+void polygon::show_filled()
+{
+    glPushMatrix();
+
+    begin();
+    {
+        glColor4ub(_polygon_data.fill_color.r,
+                   _polygon_data.fill_color.g,
+                   _polygon_data.fill_color.b,
+                   _polygon_data.fill_color.a);
+        for (int i = 0; i < _polygon_data.point_position.size(); i++)
+            translate_point_to_vertex(i);
+    }
+    end();
+
+    glPopMatrix();
 }

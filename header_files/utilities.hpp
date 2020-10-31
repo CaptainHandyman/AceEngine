@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
- * @modify date 2020-10-30 21:43:51
+ * @modify date 2020-10-31 09:46:03
  * @version 0.025
  */
 
@@ -68,7 +68,7 @@ namespace ACE
                    uint16_t b, uint16_t a);
 
         uint16_t r = 0, g = 0,
-                 b = 0, a = 0;
+                 b = 0, a = 255;
     };
 
     class screen
