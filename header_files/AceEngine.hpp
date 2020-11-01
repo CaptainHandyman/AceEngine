@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-10-31 23:05:11
+ * @modify date 2020-11-01 16:15:47
  * @version 0.03
  */
 
@@ -86,13 +86,34 @@ namespace ACE
 
         void set_center(ACE::vector2<float> center);
 
-        void squeeze(vector2<float> sides);
-
         vector4<float> get_bounds();
 
     private:
         polygon_data _polygon_data;
     } /* class polygon */;
+
+    class box
+    {
+    public:
+        box();
+
+        void set_size(vector2<float> size);
+
+        void set_position(vector2<float> position);
+
+        void set_fill_color(rgba_color fill_color);
+
+        void rotate(float angle), set_rotation(float angle);
+
+        void show_unfilled(), show_filled();
+
+        void squeeze(vector2<float> sides);
+
+        vector4<float> get_bounds();
+
+    private:
+        polygon _polygon;
+    };
 } // namespace ACE
 
 #endif // ACEENGINE_HPP

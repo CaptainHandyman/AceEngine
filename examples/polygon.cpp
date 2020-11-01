@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-31 23:04:46
- * @modify date 2020-10-31 23:04:46
+ * @modify date 2020-11-01 16:15:50
  * @version 0.03
  */
 
@@ -22,7 +22,7 @@ int main()
     SDL_SetWindowSize(window.translate_to_sdl(), ACE::screen::get_size().x,
                       ACE::screen::get_size().y);
 
-    polygon.set_point_count(4);
+    polygon.set_point_count(3);
     polygon.set_point_position(0, ACE::vector2<float>(0, 0));
     polygon.set_point_position(1, ACE::vector2<float>(100, 0));
     polygon.set_point_position(2, ACE::vector2<float>(100, 100));
@@ -39,10 +39,6 @@ int main()
             if (window.quit(event))
                 window.close();
         }
-
-        polygon.squeeze(ACE::vector2<float>(0.004, 0));
-
-        cout << polygon.get_bounds().w << endl;
 
         window.clear();
         polygon.show_filled();

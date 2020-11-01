@@ -2,12 +2,13 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-10-31 23:05:24
+ * @modify date 2020-11-01 16:15:43
  * @version 0.03
  */
 
 #include "../header_files/AceEngine.hpp"
 #include <stdexcept>
+#include <algorithm>
 using namespace ACE;
 
 bool CAN_DRAW_OBJECTS = false;
@@ -188,7 +189,7 @@ vector4<int> window::get_bounds()
 
 void polygon::set_point_count(uint64_t count)
 {
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i <= count; i++)
         _polygon_data.point_position.push_back(vector2<float>(0, 0));
 }
 
@@ -196,8 +197,16 @@ void polygon::set_point_position(uint64_t id, vector2<float> position)
 {
     _polygon_data.point_position.at(id) = position;
 
-    _polygon_data.bounds.w = std::max(position.x, _polygon_data.bounds.w);
-    _polygon_data.bounds.h = std::max(position.y, _polygon_data.bounds.h);
+    for (uint64_t i = 0; i < _polygon_data.point_position.size(); i++)
+    {
+        for (uint64_t j = i + 1; j < _polygon_data.point_position.size(); j++)
+        {
+            _polygon_data.bounds.w = std::max(_polygon_data.point_position.at(i).x,
+                                              _polygon_data.point_position.at(j).x);
+            _polygon_data.bounds.h = std::max(_polygon_data.point_position.at(i).y,
+                                              _polygon_data.point_position.at(j).y);
+        }
+    }
 }
 
 void polygon::set_fill_color(rgba_color fill_color)
@@ -300,28 +309,62 @@ void polygon::set_center(vector2<float> center)
     _polygon_data.center = center;
 }
 
-void polygon::squeeze(vector2<float> sides)
-{
-    for (uint64_t i = 0; i < _polygon_data.point_position.size(); i++)
-    {
-        if (_polygon_data.point_position.at(i).x != 0)
-            _polygon_data.point_position.at(i).x += std::abs(sides.x);
-        if (_polygon_data.point_position.at(i).y != 0)
-            _polygon_data.point_position.at(i).y += std::abs(sides.y);
-
-        _polygon_data.bounds.w = std::max(_polygon_data.point_position.at(i).x,
-                                          _polygon_data.bounds.w);
-        _polygon_data.bounds.h = std::max(_polygon_data.point_position.at(i).y,
-                                          _polygon_data.bounds.h);
-
-        if (sides.x != 0)
-            _polygon_data.bounds.x -= sides.x / (2 * _polygon_data.point_position.size());
-        if (sides.y != 0)
-            _polygon_data.bounds.y -= sides.y / (2 * _polygon_data.point_position.size());
-    }
-}
-
 vector4<float> polygon::get_bounds()
 {
     return _polygon_data.bounds;
+}
+
+box::box()
+{
+    _polygon.set_point_count(3);
+}
+
+void box::set_size(vector2<float> size)
+{
+    _polygon.set_point_position(1, vector2<float>(size.x, 0));
+    _polygon.set_point_position(2, vector2<float>(size.x, size.y));
+    _polygon.set_point_position(3, vector2<float>(0, size.y));
+}
+
+void box::set_position(vector2<float> position)
+{
+    _polygon.set_position(position);
+}
+
+void box::set_fill_color(rgba_color fill_color)
+{
+    _polygon.set_fill_color(fill_color);
+}
+
+void box::rotate(float angle)
+{
+    _polygon.rotate(angle);
+}
+
+void box::set_rotation(float angle)
+{
+    _polygon.set_rotation(angle);
+}
+
+void box::show_unfilled()
+{
+    _polygon.show_unfilled();
+}
+
+void box::show_filled()
+{
+    _polygon.show_filled();
+}
+
+void box::squeeze(vector2<float> sides)
+{
+    set_size(vector2<float>(get_bounds().w - sides.x,
+                            get_bounds().h - sides.y));
+    set_position(vector2<float>(get_bounds().x + sides.x / 2,
+                                get_bounds().y + sides.y / 2));
+}
+
+vector4<float> box::get_bounds()
+{
+    return _polygon.get_bounds();
 }
