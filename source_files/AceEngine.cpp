@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-11-01 16:15:43
- * @version 0.035
+ * @modify date 2020-11-03 03:53:40
+ * @version 0.04
  */
 
 #include "../header_files/AceEngine.hpp"
@@ -187,6 +187,11 @@ vector4<int> window::get_bounds()
     return _window_data.bounds;
 }
 
+rgba_color window::get_fill_color()
+{
+    return _window_data.fill_color;
+}
+
 void polygon::set_point_count(uint64_t count)
 {
     for (int i = 0; i <= count; i++)
@@ -314,6 +319,11 @@ vector4<float> polygon::get_bounds()
     return _polygon_data.bounds;
 }
 
+rgba_color polygon::get_fill_color()
+{
+    return _polygon_data.fill_color;
+}
+
 box::box()
 {
     _polygon.set_point_count(3);
@@ -364,7 +374,162 @@ void box::squeeze(vector2<float> sides)
                                 get_bounds().y + sides.y / 2));
 }
 
+void box::set_scale(vector2<float> scale)
+{
+    set_size(vector2<float>(get_bounds().w * scale.x,
+                            get_bounds().h * scale.y));
+}
+
 vector4<float> box::get_bounds()
 {
     return _polygon.get_bounds();
+}
+
+rgba_color box::get_fill_color()
+{
+    return _polygon.get_fill_color();
+}
+
+void texture::load(ACE_STRING path)
+{
+    _texture_data.sufrace = IMG_Load(path);
+
+    if (_texture_data.sufrace->format->Amask)
+        _texture_data.format = GL_RGBA;
+    else
+        _texture_data.format = GL_RGB;
+
+    glGenTextures(1, &_texture_data.id);
+    glBindTexture(GL_TEXTURE_2D, _texture_data.id);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, _texture_data.parameter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, _texture_data.parameter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    _texture_data.size.x = _texture_data.sufrace->w;
+    _texture_data.size.y = _texture_data.sufrace->h;
+
+    glTexImage2D(GL_TEXTURE_2D, 0, _texture_data.format,
+                 get_size().x, get_size().y, 0,
+                 _texture_data.format, GL_UNSIGNED_BYTE, _texture_data.sufrace->pixels);
+
+    SDL_FreeSurface(_texture_data.sufrace);
+}
+
+void texture::set_smooth(bool _bool)
+{
+    if (_bool)
+        _texture_data.parameter = GL_LINEAR;
+    else
+        _texture_data.parameter = GL_NEAREST;
+}
+
+int texture::get_id()
+{
+    return _texture_data.id;
+}
+
+vector2<int> texture::get_size()
+{
+    return _texture_data.size;
+}
+
+ACE_STRING texture::get_format()
+{
+    if (_texture_data.format == GL_RGBA)
+        return "RGBA";
+    else
+        return "RGB";
+}
+
+sprite::sprite()
+{
+    _polygon.set_point_count(3);
+    _polygon.set_fill_color(rgba_color(255, 255, 255, 255));
+}
+
+void sprite::set_texture(texture _texture)
+{
+    this->_texture = _texture;
+
+    set_size(vector2<float>(_texture.get_size().x,
+                            _texture.get_size().y));
+}
+
+void sprite::set_size(vector2<float> size)
+{
+    _polygon.set_point_position(1, vector2<float>(size.x, 0));
+    _polygon.set_point_position(2, vector2<float>(size.x, size.y));
+    _polygon.set_point_position(3, vector2<float>(0, size.y));
+}
+
+void sprite::set_position(vector2<float> position)
+{
+    _polygon.set_position(position);
+}
+
+void sprite::set_center(vector2<float> center)
+{
+    _polygon.set_center(center);
+}
+
+void sprite::set_rotation(float angle)
+{
+    _polygon.set_rotation(angle);
+}
+
+void sprite::rotate(float angle)
+{
+    _polygon.rotate(angle);
+}
+
+void sprite::squeeze(vector2<float> sides)
+{
+    set_size(vector2<float>(get_bounds().w + sides.x,
+                            get_bounds().h + sides.y));
+    set_position(vector2<float>(get_bounds().x - sides.x / 2,
+                                get_bounds().y - sides.y / 2));
+}
+
+void sprite::set_scale(vector2<float> scale)
+{
+}
+
+void sprite::set_transparency(int transparency)
+{
+}
+
+void sprite::show()
+{
+    glPushMatrix();
+
+    glEnable(GL_TEXTURE_2D);
+
+    _polygon.begin();
+    {
+        glTexCoord2f(0, 0);
+        _polygon.translate_point_to_vertex(0);
+        glTexCoord2f(1, 0);
+        _polygon.translate_point_to_vertex(1);
+        glTexCoord2f(1, 1);
+        _polygon.translate_point_to_vertex(2);
+        glTexCoord2f(0, 1);
+        _polygon.translate_point_to_vertex(3);
+    }
+    _polygon.end();
+
+    glDisable(GL_TEXTURE_2D);
+
+    glPopMatrix();
+}
+
+vector4<float> sprite::get_bounds()
+{
+    return _polygon.get_bounds();
+}
+
+rgba_color sprite::get_fill_color()
+{
+    return _polygon.get_fill_color();
 }

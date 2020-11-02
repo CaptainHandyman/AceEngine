@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:19
- * @modify date 2020-10-31 23:05:20
- * @version 0.035
+ * @modify date 2020-11-03 03:53:43
+ * @version 0.04
  */
 
 #ifndef STRUCTURES_HPP
@@ -29,6 +29,14 @@ namespace ACE
         std::vector<vector2<float>> point_position;
         rgba_color fill_color;
         float angle = 0;
+    };
+
+    struct texture_data
+    {
+        SDL_Surface *sufrace;
+        unsigned int id = 0;
+        vector2<int> size;
+        int format, parameter = GL_NEAREST;
     };
 } // namespace ACE
 

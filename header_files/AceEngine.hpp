@@ -2,8 +2,8 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-11-01 16:15:47
- * @version 0.035
+ * @modify date 2020-11-03 03:53:45
+ * @version 0.04
  */
 
 #ifndef ACEENGINE_HPP
@@ -60,8 +60,12 @@ namespace ACE
 
         vector4<int> get_bounds();
 
+        rgba_color get_fill_color();
+
     private:
-        window_data _window_data; SDL_Window *_window;
+        window_data _window_data;
+
+        SDL_Window *_window;
     } /* class window */;
 
     class polygon
@@ -88,6 +92,8 @@ namespace ACE
 
         vector4<float> get_bounds();
 
+        rgba_color get_fill_color();
+
     private:
         polygon_data _polygon_data;
     } /* class polygon */;
@@ -109,9 +115,62 @@ namespace ACE
 
         void squeeze(vector2<float> sides);
 
+        void set_scale(vector2<float> scale);
+
         vector4<float> get_bounds();
 
+        rgba_color get_fill_color();
+
     private:
+        polygon _polygon;
+    };
+
+    class texture
+    {
+    public:
+        void load(ACE_STRING path);
+
+        void set_smooth(bool _bool);
+
+        int get_id();
+
+        vector2<int> get_size();
+
+        ACE_STRING get_format();
+
+    private:
+        texture_data _texture_data;
+    };
+
+    class sprite
+    {
+    public:
+        sprite();
+
+        void set_texture(texture _texture);
+
+        void set_size(vector2<float> size);
+
+        void set_position(vector2<float> position);
+
+        void set_center(vector2<float> center);
+
+        void set_rotation(float angle), rotate(float angle);
+
+        void squeeze(vector2<float> sides);
+
+        void set_scale(vector2<float> scale);
+
+        void set_transparency(int transparency);
+
+        void show();
+
+        vector4<float> get_bounds();
+
+        rgba_color get_fill_color();
+
+    private:
+        texture _texture;
         polygon _polygon;
     };
 } // namespace ACE
