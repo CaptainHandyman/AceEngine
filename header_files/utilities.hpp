@@ -17,6 +17,11 @@ typedef uint16_t ACE_FLAGS;
 
 namespace ACE
 {
+    namespace UTILITIES
+    {
+        int get_string_length(ACE_STRING str);
+    } // namespace UTILITIES
+
     template <typename T>
     class vector2
     {
