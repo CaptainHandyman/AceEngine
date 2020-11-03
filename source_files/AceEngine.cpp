@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-11-03 03:53:40
+ * @modify date 2020-11-03 13:49:48
  * @version 0.04
  */
 
@@ -376,8 +376,18 @@ void box::squeeze(vector2<float> sides)
 
 void box::set_scale(vector2<float> scale)
 {
-    set_size(vector2<float>(get_bounds().w * scale.x,
-                            get_bounds().h * scale.y));
+    vector2<float> size;
+
+    if (scale.x >= 0)
+        size.x = get_bounds().w * scale.x;
+    else
+        size.x = get_bounds().w / abs(scale.x);
+    if (scale.y >= 0)
+        size.y = get_bounds().h * scale.y;
+    else
+        size.y = get_bounds().h / abs(scale.y);
+
+    set_size(size);
 }
 
 vector4<float> box::get_bounds()
@@ -494,6 +504,18 @@ void sprite::squeeze(vector2<float> sides)
 
 void sprite::set_scale(vector2<float> scale)
 {
+    ACE::vector2<float> size;
+
+    if (scale.x >= 0)
+        size.x = get_bounds().w * scale.x;
+    else
+        size.x = get_bounds().w / abs(scale.x);
+    if (scale.y >= 0)
+        size.y = get_bounds().h * scale.y;
+    else
+        size.y = get_bounds().h / abs(scale.y);
+
+    set_size(size);
 }
 
 void sprite::set_transparency(int transparency)
