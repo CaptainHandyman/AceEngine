@@ -21,6 +21,7 @@ int main()
     box.set_size({100, 100});
     box.set_fill_color({255, 0, 0});
     box.set_position({200, 200});
+    box.set_scale(ACE::vector2<float>(2, 2));
 
     while (window.is_open())
     {
