@@ -9,16 +9,6 @@
 #include "../header_files/utilities.hpp"
 using namespace ACE;
 
-int UTILITIES::get_string_length(ACE_STRING str)
-{
-    int length = 0;
-
-    while (str[length] != '\0')
-        length++;
-
-    return length;
-}
-
 rgba_color::rgba_color() {}
 
 rgba_color::rgba_color(uint16_t r, uint16_t g,
