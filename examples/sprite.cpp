@@ -20,6 +20,7 @@ int main()
     texture.load("texture.png");
     sprite.set_texture(texture);
     sprite.set_scale(ACE::vector2<float>(2, 2));
+    // sprite.set_texture_part(ACE::vector4<int>(x, y, width, height));
 
     while (window.is_open())
     {
