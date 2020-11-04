@@ -17,6 +17,7 @@ int main()
 {
     window.create("sprite", ACE_WINDOW_POS_CENTERED, ACE::vector2<int>(800, 800));
 
+    // texture.set_smooth(true);
     texture.load("texture.png");
     sprite.set_texture(texture);
     sprite.set_scale(ACE::vector2<float>(2, 2));

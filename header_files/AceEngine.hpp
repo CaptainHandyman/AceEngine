@@ -37,12 +37,14 @@ namespace ACE
 
         void create(ACE_STRING title, vector4<int> bounds);
 
-        void create(ACE_STRING title, uint16_t position,
+        void create(ACE_STRING title, uint8_t position,
                     vector2<int> size);
 
         void set_flags(ACE_FLAGS window_flags);
 
         void set_fill_color(rgba_color fill_color);
+
+        void set_position(uint8_t position);
 
         window &operator=(SDL_Window *_window);
 

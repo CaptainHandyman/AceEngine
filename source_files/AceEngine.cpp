@@ -39,7 +39,7 @@ void window::create(ACE_STRING title, vector4<int> bounds)
     _window_data.bounds = bounds;
 }
 
-void window::create(ACE_STRING title, uint16_t position, vector2<int> size)
+void window::create(ACE_STRING title, uint8_t position, vector2<int> size)
 {
     switch (position)
     {
@@ -111,6 +111,42 @@ void window::set_vsync(bool _bool)
         SDL_GL_SetSwapInterval(SDL_TRUE);
     else
         SDL_GL_SetSwapInterval(SDL_FALSE);
+}
+
+void window::set_position(uint8_t position)
+{
+    switch (position)
+    {
+    case ACE_WINDOW_POS_CENTERED:
+        _window_data.bounds.x = screen::get_size().x / 2 -
+                                _window_data.bounds.w / 2;
+        _window_data.bounds.y = screen::get_size().y / 2 -
+                                _window_data.bounds.h / 2;
+        break;
+    case ACE_WINDOW_POS_TOP_LEFT:
+        _window_data.bounds.x = 0;
+        _window_data.bounds.y = 0;
+        break;
+    case ACE_WINDOW_POS_TOP_RIGHT:
+        _window_data.bounds.x = screen::get_size().x -
+                                _window_data.bounds.w;
+        _window_data.bounds.y = 0;
+        break;
+    case ACE_WINDOW_POS_BOTTOM_LEFT:
+        _window_data.bounds.x = 0;
+        _window_data.bounds.y = screen::get_size().y -
+                                _window_data.bounds.h;
+        break;
+    case ACE_WINDOW_POS_BOTTOM_RIGHT:
+        _window_data.bounds.x = screen::get_size().x -
+                                _window_data.bounds.w;
+        _window_data.bounds.y = screen::get_size().y -
+                                _window_data.bounds.h;
+        break;
+    }
+
+    SDL_SetWindowPosition(_window, _window_data.bounds.x,
+                          _window_data.bounds.y);
 }
 
 window &window::operator=(SDL_Window *_window)
