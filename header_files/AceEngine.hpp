@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-11-03 03:53:45
+ * @modify date 2020-11-04 01:55:37
  * @version 0.04
  */
 
@@ -53,6 +53,8 @@ namespace ACE
         bool quit(SDL_Event event), is_open();
 
         void clear(), display(), close();
+
+        void set_vsync(bool _bool);
 
         SDL_Window *translate_to_sdl();
 
@@ -163,6 +165,8 @@ namespace ACE
 
         void set_transparency(int transparency);
 
+        void set_texture_part(vector4<int> bounds);
+
         void show();
 
         vector4<float> get_bounds();
@@ -170,6 +174,8 @@ namespace ACE
         rgba_color get_fill_color();
 
     private:
+        sprite_data _sprite_data;
+
         texture _texture;
         polygon _polygon;
     };

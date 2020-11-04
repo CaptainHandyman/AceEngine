@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:19
- * @modify date 2020-11-03 03:53:43
+ * @modify date 2020-11-04 01:55:34
  * @version 0.04
  */
 
@@ -37,6 +37,11 @@ namespace ACE
         unsigned int id = 0;
         vector2<int> size;
         int format, parameter = GL_NEAREST;
+    };
+
+    struct sprite_data
+    {
+        vector4<float> texture_part;
     };
 } // namespace ACE
 

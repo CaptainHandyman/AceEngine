@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-11-03 13:49:48
+ * @modify date 2020-11-04 01:55:30
  * @version 0.04
  */
 
@@ -103,6 +103,14 @@ void window::close()
 {
     SDL_DestroyWindow(_window);
     _window = NULL;
+}
+
+void window::set_vsync(bool _bool)
+{
+    if (_bool)
+        SDL_GL_SetSwapInterval(SDL_TRUE);
+    else
+        SDL_GL_SetSwapInterval(SDL_FALSE);
 }
 
 window &window::operator=(SDL_Window *_window)
@@ -457,6 +465,11 @@ sprite::sprite()
 {
     _polygon.set_point_count(3);
     _polygon.set_fill_color(rgba_color(255, 255, 255, 255));
+
+    _sprite_data.texture_part = {0,
+                                 0,
+                                 1,
+                                 1};
 }
 
 void sprite::set_texture(texture _texture)
@@ -520,6 +533,18 @@ void sprite::set_scale(vector2<float> scale)
 
 void sprite::set_transparency(int transparency)
 {
+    _polygon.set_fill_color(rgba_color(255, 255, 255, transparency));
+}
+
+void sprite::set_texture_part(vector4<int> bounds)
+{
+    _sprite_data.texture_part.x = (float)bounds.x / _texture.get_size().x;
+    _sprite_data.texture_part.y = (float)bounds.y / _texture.get_size().y;
+
+    _sprite_data.texture_part.w = (float)(bounds.x + bounds.w) / _texture.get_size().x;
+    _sprite_data.texture_part.h = (float)(bounds.y + bounds.h) / _texture.get_size().y;
+
+    set_size(vector2<float>(bounds.w, bounds.h));
 }
 
 void sprite::show()
@@ -530,13 +555,13 @@ void sprite::show()
 
     _polygon.begin();
     {
-        glTexCoord2f(0, 0);
+        glTexCoord2f(_sprite_data.texture_part.x, _sprite_data.texture_part.y);
         _polygon.translate_point_to_vertex(0);
-        glTexCoord2f(1, 0);
+        glTexCoord2f(_sprite_data.texture_part.w, _sprite_data.texture_part.y);
         _polygon.translate_point_to_vertex(1);
-        glTexCoord2f(1, 1);
+        glTexCoord2f(_sprite_data.texture_part.w, _sprite_data.texture_part.h);
         _polygon.translate_point_to_vertex(2);
-        glTexCoord2f(0, 1);
+        glTexCoord2f(_sprite_data.texture_part.x, _sprite_data.texture_part.h);
         _polygon.translate_point_to_vertex(3);
     }
     _polygon.end();
