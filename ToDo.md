@@ -1,0 +1,3 @@
+- [ ] Create animation class
+- [ ] Create font class
+- [ ] Create text class
