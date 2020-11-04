@@ -322,6 +322,11 @@ void polygon::set_center(vector2<float> center)
     _polygon_data.center = center;
 }
 
+uint64_t polygon::get_point_count()
+{
+    return _polygon_data.point_position.size();
+}
+
 vector4<float> polygon::get_bounds()
 {
     return _polygon_data.bounds;

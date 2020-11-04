@@ -92,6 +92,8 @@ namespace ACE
 
         void set_center(ACE::vector2<float> center);
 
+        uint64_t get_point_count();
+
         vector4<float> get_bounds();
 
         rgba_color get_fill_color();
