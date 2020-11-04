@@ -1,5 +1,5 @@
 CXX = g++
-CXX_FLAGS = -std=c++11 -Wall -Wextra
+CXX_FLAGS = -std=c++17 -Wall -Wextra
 
 LIBS = -lSDL2 \
 	   -lSDL2_image \

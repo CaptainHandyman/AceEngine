@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
- * @modify date 2020-10-31 09:46:03
+ * @modify date 2020-11-04 13:57:01
  * @version 0.045
  */
 
@@ -75,6 +75,22 @@ namespace ACE
     {
     public:
         static vector2<uint32_t> get_size();
+    };
+
+    class mouse
+    {
+    public:
+        static bool left_button_pressed();
+
+        static bool right_button_pressed();
+
+        static bool middle_button_pressed();
+
+        static bool wheel_scrolled_up(SDL_Event event);
+
+        static bool wheel_scrolled_down(SDL_Event event);
+
+        static vector2<int> get_position();
     };
 
 #include "utilities.imp"
