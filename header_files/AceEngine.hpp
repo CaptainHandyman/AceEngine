@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
- * @modify date 2020-11-04 01:55:37
+ * @modify date 2020-11-04 23:02:05
  * @version 0.045
  */
 
@@ -10,7 +10,6 @@
 #define ACEENGINE_HPP
 
 #include "includes.hpp"
-#include "utilities.hpp"
 #include "structures.hpp"
 
 #define ACE_WINDOW_POS_CENTERED 0x0u

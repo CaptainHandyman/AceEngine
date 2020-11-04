@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
- * @modify date 2020-11-04 13:57:01
+ * @modify date 2020-11-04 23:02:02
  * @version 0.045
  */
 
@@ -91,6 +91,24 @@ namespace ACE
         static bool wheel_scrolled_down(SDL_Event event);
 
         static vector2<int> get_position();
+    };
+
+    class timer
+    {
+    public:
+        float in_milliseconds();
+
+        int in_seconds();
+
+        void start();
+
+        void stop();
+
+        void restart();
+
+    private:
+        float milliseconds = 0, a = 0;
+        bool started = false;
     };
 
 #include "utilities.imp"

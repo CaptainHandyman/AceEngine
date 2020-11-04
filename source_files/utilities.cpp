@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:50
- * @modify date 2020-11-04 13:57:03
+ * @modify date 2020-11-04 23:01:57
  * @version 0.045
  */
 
@@ -71,4 +71,39 @@ vector2<int> mouse::get_position()
     SDL_GetMouseState(&position.x, &position.y);
 
     return position;
+}
+
+float timer::in_milliseconds()
+{
+    if (started)
+        milliseconds = (float)(SDL_GetTicks() - a) / 1000;
+
+    return milliseconds;
+}
+
+int timer::in_seconds()
+{
+    if (started)
+        return SDL_GetTicks() / 1000;
+}
+
+void timer::start()
+{
+    if (!started)
+    {
+        a = SDL_GetTicks();
+        started = true;
+    }
+}
+
+void timer::stop()
+{
+    if (started)
+        started = false;
+}
+
+void timer::restart()
+{
+    stop();
+    start();
 }
