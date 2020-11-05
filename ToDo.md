@@ -1,6 +1,5 @@
 **Create**:
-- [ ] animation class
-- [ ] font class
-- [ ] text class
-- [ ] animation class
-- [ ] keyboard class
+- [ ] Font class
+- [ ] Text class
+- [ ] Animation class
+- [X] Keyboard class
