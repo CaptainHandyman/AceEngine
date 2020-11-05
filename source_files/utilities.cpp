@@ -110,12 +110,12 @@ void timer::restart()
 
 const Uint8 *key = SDL_GetKeyboardState(NULL);
 
-bool keyboard::key_pressed(SDL_Scancode scancode)
+bool keyboard::is_key_pressed(SDL_Scancode scancode)
 {
     return key[scancode];
 }
 
-bool keyboard::any_key_pressed()
+bool keyboard::is_any_key_pressed()
 {
     for (int i = 0; i < SDL_NUM_SCANCODES; i++)
     {

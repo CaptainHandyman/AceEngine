@@ -114,9 +114,9 @@ namespace ACE
     class keyboard
     {
     public:
-        static bool key_pressed(SDL_Scancode scancode);
+        static bool is_key_pressed(SDL_Scancode scancode);
 
-        static bool any_key_pressed();
+        static bool is_any_key_pressed();
     };
 
 #include "utilities.imp"

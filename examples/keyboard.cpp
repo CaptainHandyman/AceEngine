@@ -17,7 +17,7 @@ int main()
                 window.close();
         }
 
-        if(ACE::keyboard::key_pressed(SDL_SCANCODE_D))
+        if(ACE::keyboard::is_key_pressed(SDL_SCANCODE_D))
             cout << "Key 'D' was pressed!" << endl;
 
         window.clear();
