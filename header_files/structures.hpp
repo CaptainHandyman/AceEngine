@@ -22,7 +22,7 @@ namespace ACE
         vector4<int> bounds;
         rgba_color fill_color;
         SDL_GLContext gl_context;
-    };
+    } /* window_data */;
 
     struct polygon_data
     {
@@ -31,7 +31,7 @@ namespace ACE
         std::vector<vector2<float>> point_position;
         rgba_color fill_color;
         float angle = 0;
-    };
+    } /* polygon_data */;
 
     struct texture_data
     {
@@ -39,12 +39,12 @@ namespace ACE
         unsigned int id = 0;
         vector2<int> size;
         int format, parameter = GL_NEAREST;
-    };
+    } /* texture_data */ ;
 
     struct sprite_data
     {
         vector4<float> texture_part;
-    };
+    } /* sprite_data */ ;
 } // namespace ACE
 
 #endif // STRUCTURES_HPP

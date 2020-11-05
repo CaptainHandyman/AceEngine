@@ -53,7 +53,7 @@ namespace ACE
                     vector2<int> size);
 
         /*
-         * This function sets flags for window, for example:
+         * This function sets flags, for example:
          * ACE_WINDOW_FULLSCREEN, ACE_WINDOW_RESIZABLE etc.,
          * but if you set ACE_WINDOW_NO_FALGS all flags will be disabled!
          */

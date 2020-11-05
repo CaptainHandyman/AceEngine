@@ -19,6 +19,7 @@ typedef uint16_t ACE_FLAGS;
 
 namespace ACE
 {
+    // 2D vector
     template <typename T>
     class vector2
     {
@@ -32,6 +33,7 @@ namespace ACE
         T x = 0, y = 0;
     };
 
+    // 3D vector
     template <typename T>
     class vector3
     {
@@ -45,6 +47,7 @@ namespace ACE
         T x = 0, y = 0, z = 0;
     };
 
+    // 4D vector
     template <typename T>
     class vector4
     {
@@ -58,6 +61,7 @@ namespace ACE
           w = 0, h = 0;
     };
 
+    // rgba color
     class rgba_color
     {
     public:
@@ -76,36 +80,48 @@ namespace ACE
     class screen
     {
     public:
+        // This function returns the size of your desktop.
         static vector2<uint32_t> get_size();
     };
 
     class mouse
     {
     public:
+        // This boolean checks if the left mouse button was pressed.
         static bool left_button_pressed();
 
+        // This boolean checks if the right mouse button was pressed.
         static bool right_button_pressed();
 
+        // This boolean checks if the middle mouse button was pressed.
         static bool middle_button_pressed();
 
+        // This boolean checks if the mouse wheel was scrolled up.
         static bool wheel_scrolled_up(SDL_Event event);
 
+        // This boolean checks if the mouse wheel was scrolled down.
         static bool wheel_scrolled_down(SDL_Event event);
 
+        // This function return the position of your mouse.
         static vector2<int> get_position();
     };
 
     class timer
     {
     public:
+        // This function returns time in float.
         float in_milliseconds();
 
+        // This function returns time in int.
         int in_seconds();
 
+        // This function starts the timer.
         void start();
 
+        // This function stops the timer.
         void stop();
 
+        // This function restarts the timer.
         void restart();
 
     private:
@@ -116,8 +132,10 @@ namespace ACE
     class keyboard
     {
     public:
+        // This function checks if key was pressed on your keyboard.
         static bool is_key_pressed(SDL_Scancode scancode);
 
+        // This function checks if any key was pressed on your keyboard.
         static bool is_any_key_pressed();
     };
 
