@@ -4,6 +4,8 @@
  * @create date 2020-10-28 14:48:48
  * @modify date 2020-11-04 01:55:30
  * @version 0.06
+ * @desc This program is free software.
+ *       you can redistribute it and/or modify.
  */
 
 #include "../header_files/AceEngine.hpp"

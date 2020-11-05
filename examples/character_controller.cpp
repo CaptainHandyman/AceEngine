@@ -1,11 +1,3 @@
-/**
- * @author Alexandr
- * @email alexandralibekov@yahoo.com
- * @create date 2020-11-05 13:08:33
- * @modify date 2020-11-05 13:08:33
- * @version 0.06
- */
-
 #include <AceEngine/AceEngine.hpp>
 #include <iostream>
 using namespace std;

@@ -4,6 +4,8 @@
  * @create date 2020-10-28 14:48:33
  * @modify date 2020-10-30 20:59:59
  * @version 0.06
+ * @desc This program is free software.
+ *       you can redistribute it and/or modify.
  */
 
 template <typename T>

@@ -4,6 +4,8 @@
  * @create date 2020-10-28 14:48:23
  * @modify date 2020-10-28 22:46:09
  * @version 0.06
+ * @desc This program is free software.
+ *       you can redistribute it and/or modify.
  */
 
 #ifndef INCLUDES_HPP
