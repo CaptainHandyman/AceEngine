@@ -130,6 +130,8 @@ namespace ACE
 
         void set_center(ACE::vector2<float> center);
 
+        void move(vector2<float> sides);
+
         uint64_t get_point_count();
 
         vector4<float> get_bounds();
@@ -158,6 +160,8 @@ namespace ACE
         void squeeze(vector2<float> sides);
 
         void set_scale(vector2<float> scale);
+
+        void move(vector2<float> sides);
 
         vector4<float> get_bounds();
 
@@ -206,6 +210,8 @@ namespace ACE
         void set_transparency(int transparency);
 
         void set_texture_part(vector4<int> bounds);
+
+        void move(vector2<float> sides);
 
         void show();
 

@@ -8,7 +8,6 @@
 
 #include "../header_files/AceEngine.hpp"
 #include <stdexcept>
-#include <algorithm>
 using namespace ACE;
 
 bool CAN_DRAW_OBJECTS = false;
@@ -358,6 +357,12 @@ void polygon::set_center(vector2<float> center)
     _polygon_data.center = center;
 }
 
+void polygon::move(vector2<float> sides)
+{
+    set_position(vector2<float>(get_bounds().x + sides.x,
+                                get_bounds().y + sides.y));
+}
+
 uint64_t polygon::get_point_count()
 {
     return _polygon_data.point_position.size();
@@ -437,6 +442,11 @@ void box::set_scale(vector2<float> scale)
         size.y = get_bounds().h / abs(scale.y);
 
     set_size(size);
+}
+
+void box::move(vector2<float> sides)
+{
+    _polygon.move(sides);
 }
 
 vector4<float> box::get_bounds()
@@ -586,6 +596,11 @@ void sprite::set_texture_part(vector4<int> bounds)
     _sprite_data.texture_part.h = (float)(bounds.y + bounds.h) / _texture.get_size().y;
 
     set_size(vector2<float>(bounds.w, bounds.h));
+}
+
+void sprite::move(vector2<float> sides)
+{
+    _polygon.move(sides);
 }
 
 void sprite::show()

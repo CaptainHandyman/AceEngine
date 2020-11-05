@@ -16,33 +16,27 @@ SDL_Event event;
 
 #define MOVEMENT_SPEED 0.04
 
-void move_box(ACE::box &box, ACE::vector2<float> sides)
-{
-    box.set_position(ACE::vector2<float>(box.get_bounds().x + sides.x,
-                                         box.get_bounds().y + sides.y));
-}
-
 void controller()
 {
     if (ACE::keyboard::is_key_pressed(SDL_SCANCODE_D))
     {
         if (box.get_bounds().x <= window.get_bounds().w - box.get_bounds().w)
-            move_box(box, ACE::vector2<float>(MOVEMENT_SPEED, 0));
+            box.move(ACE::vector2<float>(MOVEMENT_SPEED, 0));
     }
     if (ACE::keyboard::is_key_pressed(SDL_SCANCODE_A))
     {
         if (box.get_bounds().x >= 0)
-            move_box(box, ACE::vector2<float>(-MOVEMENT_SPEED, 0));
+            box.move(ACE::vector2<float>(-MOVEMENT_SPEED, 0));
     }
     if (ACE::keyboard::is_key_pressed(SDL_SCANCODE_W))
     {
         if (box.get_bounds().y >= 0)
-            move_box(box, ACE::vector2<float>(0, -MOVEMENT_SPEED));
+            box.move(ACE::vector2<float>(0, -MOVEMENT_SPEED));
     }
     if (ACE::keyboard::is_key_pressed(SDL_SCANCODE_S))
     {
         if (box.get_bounds().y <= window.get_bounds().h - box.get_bounds().h)
-            move_box(box, ACE::vector2<float>(0, MOVEMENT_SPEED));
+            box.move(ACE::vector2<float>(0, MOVEMENT_SPEED));
     }
 }
 
