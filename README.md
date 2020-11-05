@@ -10,7 +10,7 @@
 * ``` ./install.sh -l ```
 #
 ### Uninstallation:
-* ``` sudo make ./install.sh -u ```
+* ``` sudo ./install.sh -u ```
 ### Compilation:
 ```
 g++ file.cpp -lAceEngine -lSDl2 \
