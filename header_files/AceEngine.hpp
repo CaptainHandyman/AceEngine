@@ -12,57 +12,94 @@
 #include "includes.hpp"
 #include "structures.hpp"
 
+// Ready-made positions
 #define ACE_WINDOW_POS_CENTERED 0x0u
 #define ACE_WINDOW_POS_TOP_LEFT 0x1u
 #define ACE_WINDOW_POS_TOP_RIGHT 0x2u
 #define ACE_WINDOW_POS_BOTTOM_LEFT 0x3u
 #define ACE_WINDOW_POS_BOTTOM_RIGHT 0x4u
+// Ready-made positions
 
+// Window flags
 enum
 {
-    ACE_WINDOW_NO_FLAGS = 1 << 0,
-    ACE_WINDOW_FULLSCREEN = 1 << 1,
-    ACE_WINDOW_RESIZABLE = 1 << 2
+    /* Disables all set flags */ ACE_WINDOW_NO_FLAGS = 1 << 0,
+    /* Makes window fullscreen */ ACE_WINDOW_FULLSCREEN = 1 << 1,
+    /* Makes window resizable */ ACE_WINDOW_RESIZABLE = 1 << 2
 };
+// Window flags
 
 namespace ACE
 {
     class window
     {
     public:
+        // Default constructor
         window();
 
+        // This function initializes OpenGL.
         void init_gl();
 
+        // This function creates a window.
         void create(ACE_STRING title, vector4<int> bounds);
 
+        /*
+         * This function creates a window, but with ready-made position,
+         * for example: ACE_WINDOW_POS_CENTERED, ACE_WINDOW_POS_TOP_LEFT etc.
+         */
         void create(ACE_STRING title, uint8_t position,
                     vector2<int> size);
 
+        /*
+         * This function sets flags for window, for example:
+         * ACE_WINDOW_FULLSCREEN, ACE_WINDOW_RESIZABLE,
+         * but if you set ACE_WINDOW_NO_FALGS all flags will be disabled!
+         */
         void set_flags(ACE_FLAGS window_flags);
 
+        // This function sets the fill color of the window.
         void set_fill_color(rgba_color fill_color);
 
+        // This function sets the position of the window.
         void set_position(uint8_t position);
 
+        // You can set your own SDL2 data for the window.
         window &operator=(SDL_Window *_window);
 
+        // This boolean checks if the current window is the same as another.
         bool operator==(SDL_Window *_window);
 
+        // This boolean checks if the current window isn't the same as another.
         bool operator!=(SDL_Window *_window);
 
-        bool quit(SDL_Event event), is_open();
+        bool /* Check for quit. */ quit(SDL_Event event),
+            /* Checks if window is open. */ is_open();
 
-        void clear(), display(), close();
+        /*
+         * Clear and display functions are required for drawing.
+         */
+        void clear(), display(),
+            /* Closes the window. */ close();
 
+        /*
+         * This function sets vertical sync.
+         */
         void set_vsync(bool _bool);
 
+        /*
+         * This function translates the current window to the SDL2 window.
+         * What for? Because if you need to set size, position or whatever,
+         * you can just type SDL_SetWindowSize (translate_to_sdl (), 1920, 1080), 
+         * SDL_SetWindowPosition (translate_to_sdl (), 200, 200).
+         */
         SDL_Window *translate_to_sdl();
 
         SDL_GLContext get_gl_context();
 
+        // This function returns the bounds of the window.
         vector4<int> get_bounds();
 
+        // With this function you can get the RGB color of the window.
         rgba_color get_fill_color();
 
     private:
