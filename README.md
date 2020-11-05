@@ -4,11 +4,11 @@
 * ``` git clone https://github.com/RedBull4/AceEngine ```
 * ``` cd AceEngine ```
 
-- **default:**
-* ``` sudo ./install.sh -d ```
+  **default:**
+  * ``` sudo ./install.sh -d ```
 
-- **local:**
-* ``` ./install.sh -l ```
+  **local:**
+  * ``` ./install.sh -l ```
 ### Uninstallation:
 * ``` sudo make ./install.sh -u ```
 ### Compilation:
