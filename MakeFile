@@ -19,12 +19,12 @@ ENGINE_PATH = /usr/include/AceEngine
 
 all:
 	$(CXX) $(CXX_FLAGS) -c -fPIC $(SOURCE_FILES) $(LIBS)
-	$(CXX) $(CXX_FLAGS) -shared $(O_FILES) -o $(LIB)
+	$(CXX) $(CXX_FLAGS) -shared $(O_FILES) -o lib/$(LIB)
 	make -f MakeFile clean
 
 install:
 	mkdir $(ENGINE_PATH)
-	mv $(LIB) $(LIB_PATH)
+	mv lib/$(LIB) $(LIB_PATH)
 	cp -r $(HEADER_FILES) $(ENGINE_PATH)
 
 clean:
