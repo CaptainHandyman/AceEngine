@@ -14,10 +14,20 @@ shared_install() {
 
 }
 
+local_install() {
+    sudo apt-get update
+    sudo apt-get install libsdl2-dev \
+        libsdl2-image-dev \
+        libsdl2-ttf-dev \
+        mesa-common-dev g++
+
+    make -f MakeFile
+}
+
 while getopts 'dlu' option; do
     case $option in
     d) shared_install ;;
-    l) make -f MakeFile ;;
+    l) local_install ;;
     u) make -f MakeFile uninstall ;;
     esac
 done
