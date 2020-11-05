@@ -1,12 +1,13 @@
 # AceEngine
-### Installation:
+## Installation:
+#### Main:
 * ``` sudo apt-get install git ```
 * ``` git clone https://github.com/RedBull4/AceEngine ```
 * ``` cd AceEngine ```
 #### Default:
 * ``` sudo ./install.sh -d ```
 #### Local:
-  * ``` ./install.sh -l ```
+* ``` ./install.sh -l ```
 #
 ### Uninstallation:
 * ``` sudo make ./install.sh -u ```
