@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:50
  * @modify date 2020-11-04 23:01:57
- * @version 0.05
+ * @version 0.06
  */
 
 #include "../header_files/utilities.hpp"
@@ -106,4 +106,22 @@ void timer::restart()
 {
     stop();
     start();
+}
+
+const Uint8 *key = SDL_GetKeyboardState(NULL);
+
+bool keyboard::key_pressed(SDL_Scancode scancode)
+{
+    return key[scancode];
+}
+
+bool keyboard::any_key_pressed()
+{
+    for (int i = 0; i < SDL_NUM_SCANCODES; i++)
+    {
+        if (key[i])
+            return true;
+    }
+
+    return false;
 }

@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
  * @modify date 2020-11-04 23:02:02
- * @version 0.05
+ * @version 0.06
  */
 
 #ifndef TOOLS_HPP
@@ -109,6 +109,14 @@ namespace ACE
     private:
         float milliseconds = 0, a = 0;
         bool started = false;
+    };
+
+    class keyboard
+    {
+    public:
+        static bool key_pressed(SDL_Scancode scancode);
+
+        static bool any_key_pressed();
     };
 
 #include "utilities.imp"
