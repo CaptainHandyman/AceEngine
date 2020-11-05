@@ -5,7 +5,7 @@
 * ``` cd AceEngine ```
 #### Default:
 * ``` sudo ./install.sh -d ```
-#### Local:**
+#### Local:
   * ``` ./install.sh -l ```
 ### Uninstallation:
 * ``` sudo make ./install.sh -u ```
