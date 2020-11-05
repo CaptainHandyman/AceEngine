@@ -54,15 +54,21 @@ namespace ACE
 
         /*
          * This function sets flags for window, for example:
-         * ACE_WINDOW_FULLSCREEN, ACE_WINDOW_RESIZABLE,
+         * ACE_WINDOW_FULLSCREEN, ACE_WINDOW_RESIZABLE etc.,
          * but if you set ACE_WINDOW_NO_FALGS all flags will be disabled!
          */
         void set_flags(ACE_FLAGS window_flags);
 
-        // This function sets the fill color of the window.
+        // This function sets the fill color.
         void set_fill_color(rgba_color fill_color);
 
-        // This function sets the position of the window.
+        /*
+         * This function sets the ready-made position, for example:
+         * ACE_WINDOW_POS_CENTERED, ACE_WINDOW_POS_TOP_LEFT.
+         * You can't set your own position with this function.
+         * If you want to set your own position, you need to type
+         * SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y)!
+         */
         void set_position(uint8_t position);
 
         // You can set your own SDL2 data for the window.
@@ -96,6 +102,7 @@ namespace ACE
          */
         SDL_Window *translate_to_sdl();
 
+        // This function returns the OpenGL context.
         SDL_GLContext get_gl_context();
 
         // This function returns the bounds of the window.
@@ -113,31 +120,55 @@ namespace ACE
     class polygon
     {
     public:
+        // This function sets the count of points.
         void set_point_count(uint64_t count);
 
+        // This function sets the position of the point
         void set_point_position(uint64_t id,
                                 vector2<float> position);
 
+        // This function sets fill color.
         void set_fill_color(rgba_color fill_color);
 
+        // Begin and end functions are required for drawing.
         void begin(), end();
 
+        // This function sets the position.
         void set_position(vector2<float> position);
 
+        /*
+         * This function translates selected point to OpenGL vertex(glVertex2f(x, y)).
+         */
         void translate_point_to_vertex(uint64_t id);
 
+        /*
+         * With show_unfilled function, you can show current polygon unfilled,
+         * with show_filled, you can show filled.
+         */
         void show_unfilled(), show_filled();
 
+        /*
+         * With set_rotation function, you can rotate polygon only once,
+         * with rotate function, you can rotate more than once.
+         */
         void set_rotation(float angle), rotate(float angle);
 
+        // This function sets the center of the current polygon for rotation.
         void set_center(ACE::vector2<float> center);
 
+        /*
+         * This function moves the current polygon in x and y coordinates.
+         * Note: if you disable vsync, the movement of the current polygon will be very slow.
+         */
         void move(vector2<float> sides);
 
+        // This function returns the count of points.
         uint64_t get_point_count();
 
+        // This function returns the bounds.
         vector4<float> get_bounds();
-
+        
+        // This function returns the fill color.
         rgba_color get_fill_color();
 
     private:
