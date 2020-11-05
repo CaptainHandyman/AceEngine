@@ -7,6 +7,7 @@
 * ``` sudo ./install.sh -d ```
 #### Local:
   * ``` ./install.sh -l ```
+#
 ### Uninstallation:
 * ``` sudo make ./install.sh -u ```
 ### Compilation:
