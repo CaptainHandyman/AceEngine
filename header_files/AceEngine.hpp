@@ -89,8 +89,8 @@ namespace ACE
         /*
          * This function translates the current window to the SDL2 window.
          * What for? Because if you need to set size, position or whatever,
-         * you can just type SDL_SetWindowSize (translate_to_sdl (), 1920, 1080), 
-         * SDL_SetWindowPosition (translate_to_sdl (), 200, 200).
+         * you can just type SDL_SetWindowSize(translate_to_sdl(), 1920, 1080), 
+         * SDL_SetWindowPosition(translate_to_sdl(), 200, 200).
          */
         SDL_Window *translate_to_sdl();
 
