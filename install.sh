@@ -1,4 +1,4 @@
-install_components() {
+components_install() {
     sudo apt-get update
     sudo apt-get install libsdl2-dev \
         libsdl2-image-dev \
@@ -6,8 +6,8 @@ install_components() {
         mesa-common-dev g++
 }
 
-shared_install() {
-    install_components
+default_install() {
+    components_install
 
     if [ -d /usr/include/AceEngine ] ||
         [ -d /usr/lib/x86_64-linux-gnu/libAceEngine.so ]; then
@@ -19,7 +19,7 @@ shared_install() {
 }
 
 local_install() {
-    install_components
+    components_install
 
     if [ ! -d "lib" ]; then
         mkdir lib
@@ -30,7 +30,7 @@ local_install() {
 
 while getopts 'dlu' option; do
     case $option in
-    d) shared_install ;;
+    d) default_install ;;
     l) local_install ;;
     u) make -f MakeFile uninstall ;;
     esac
