@@ -2,7 +2,7 @@
  * @author Alexandr
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
- * @modify date 2020-11-04 01:55:30
+ * @modify date 2020-11-06 09:48:26
  * @version 0.07
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
@@ -347,6 +347,9 @@ void polygon::show_filled()
 void polygon::set_rotation(float angle)
 {
     _polygon_data.angle = angle;
+
+    while (_polygon_data.angle > 360)
+        _polygon_data.angle -= 360;
 }
 
 void polygon::rotate(float angle)
