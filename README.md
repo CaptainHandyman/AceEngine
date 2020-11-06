@@ -1,5 +1,4 @@
-![alt text](https://raw.githubusercontent.com/RedBull4/AceEngine/master/AceEngine.png)
-#
+# AceEngine
 ### Installation:
 * ``` sudo apt-get update ```
 * ``` sudo apt-get install git ```
