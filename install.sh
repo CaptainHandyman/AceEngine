@@ -1,9 +1,13 @@
-shared_install() {
+install_components() {
     sudo apt-get update
     sudo apt-get install libsdl2-dev \
         libsdl2-image-dev \
         libsdl2-ttf-dev \
         mesa-common-dev g++
+}
+
+shared_install() {
+    install_components
 
     if [ -d /usr/include/AceEngine ] ||
         [ -d /usr/lib/x86_64-linux-gnu/libAceEngine.so ]; then
@@ -15,11 +19,11 @@ shared_install() {
 }
 
 local_install() {
-    sudo apt-get update
-    sudo apt-get install libsdl2-dev \
-        libsdl2-image-dev \
-        libsdl2-ttf-dev \
-        mesa-common-dev g++
+    install_components
+
+    if [ ! -d "lib" ]; then
+        mkdir lib
+    fi
 
     make -f MakeFile
 }
