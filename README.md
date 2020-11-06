@@ -4,9 +4,9 @@
 * ``` sudo apt-get install git ```
 * ``` git clone https://github.com/RedBull4/AceEngine ```
 * ``` cd AceEngine ```
-* ``` sudo ./install.sh -i ```
+* ``` sudo ./installer.sh -i ```
 ### Uninstallation:
-* ``` sudo ./install.sh -u ```
+* ``` sudo ./installer.sh -u ```
 ### Compilation:
 ```
 g++ file.cpp -lAceEngine -lSDl2 \
