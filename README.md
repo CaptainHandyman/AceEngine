@@ -8,6 +8,8 @@
 * ``` sudo ./install.sh -d ```
 #### Local:
 * ``` sudo ./install.sh -l ```
+
+  Local installation only creates a ``` .so ``` file in the ``` lib ``` folder!
 #
 ### Uninstallation:
 * ``` sudo ./install.sh -u ```
