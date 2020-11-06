@@ -86,7 +86,7 @@ float timer::in_milliseconds()
 int timer::in_seconds()
 {
     if (started)
-        return SDL_GetTicks() / 1000;
+        return (SDL_GetTicks() - a) / 1000;
 }
 
 void timer::start()

@@ -24,11 +24,11 @@ all:
 
 install:
 	mkdir $(ENGINE_PATH)
-	mv lib/$(LIB) $(LIB_PATH)
+	cp -r lib/$(LIB) $(LIB_PATH)
 	cp -r $(HEADER_FILES) $(ENGINE_PATH)
 
 clean:
 	rm -rf *.o
 
 uninstall:
-	sudo rm -rf $(LIB_PATH)/$(LIB) $(ENGINE_PATH)
+	sudo rm -rf $(LIB_PATH)$(LIB) $(ENGINE_PATH)

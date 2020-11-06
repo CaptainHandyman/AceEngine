@@ -1,4 +1,4 @@
-components_install() {
+install_components() {
     sudo apt-get update
     sudo apt-get install libsdl2-dev \
         libsdl2-image-dev \
@@ -6,8 +6,8 @@ components_install() {
         mesa-common-dev g++
 }
 
-default_install() {
-    components_install
+install() {
+    install_components
 
     if [ ! -d "lib" ]; then
         mkdir lib
@@ -19,23 +19,11 @@ default_install() {
     fi
     make -f MakeFile
     sudo make -f MakeFile install
-
 }
 
-local_install() {
-    components_install
-
-    if [ ! -d "lib" ]; then
-        mkdir lib
-    fi
-
-    make -f MakeFile
-}
-
-while getopts 'dlu' option; do
+while getopts 'iu' option; do
     case $option in
-    d) default_install ;;
-    l) local_install ;;
+    i) install ;;
     u) make -f MakeFile uninstall ;;
     esac
 done

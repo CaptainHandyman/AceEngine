@@ -66,7 +66,8 @@ namespace ACE
          * ACE_WINDOW_POS_CENTERED, ACE_WINDOW_POS_TOP_LEFT.
          * You can't set your own position with this function.
          * If you want to set your own position, you need to type
-         * SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y)!
+         * SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y)
+         * or you can create a window with your own position!
          */
         void set_position(uint8_t position);
 
@@ -173,26 +174,40 @@ namespace ACE
     class box
     {
     public:
+        // Default constructor.
         box();
 
+        // Sets the size.
         void set_size(vector2<float> size);
 
+        // Sets the position.
         void set_position(vector2<float> position);
 
+        // Sets the fill color.
         void set_fill_color(rgba_color fill_color);
 
+        /*
+         * With set_rotation function, you can rotate polygon only once,
+         * with rotate function, you can rotate more than once.
+         */
         void rotate(float angle), set_rotation(float angle);
 
+        // With show_unfilled function, you can show current polygon unfilled, with show_filled, filled.
         void show_unfilled(), show_filled();
 
+        // Squeezes current box.
         void squeeze(vector2<float> sides);
 
+        // Sets the scale.
         void set_scale(vector2<float> scale);
 
+        // Moves the box.
         void move(vector2<float> sides);
 
+        // Returns the bounds.
         vector4<float> get_bounds();
 
+        // Returns the fill color.
         rgba_color get_fill_color();
 
     private:
@@ -202,16 +217,25 @@ namespace ACE
     class texture
     {
     public:
+        /*
+         * Loads a texture from the specified path.
+         * Formats: .png, .jpg, .jpeg, .bmp.
+         */
         void load(ACE_STRING path);
 
-        void set_smooth(bool _bool);
+        // Sets smoothness.
+        void set_smooth(bool _bool);    
 
+        // Returns the id of current texture.
         int get_id();
 
+        // Returns the size.
         vector2<int> get_size();
 
+        // Returns the format.
         ACE_STRING get_format();
 
+        // Checks if texture is smooth.
         bool smoothed();
 
     private:
