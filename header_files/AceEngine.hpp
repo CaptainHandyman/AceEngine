@@ -215,6 +215,8 @@ namespace ACE
 
         ACE_STRING get_format();
 
+        bool smoothed();
+
     private:
         texture_data _texture_data;
     };

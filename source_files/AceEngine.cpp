@@ -517,6 +517,11 @@ ACE_STRING texture::get_format()
         return "RGB";
 }
 
+bool texture::smoothed()
+{
+    return _texture_data.parameter == GL_LINEAR;
+}
+
 sprite::sprite()
 {
     _polygon.set_point_count(3);

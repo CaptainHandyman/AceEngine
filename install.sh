@@ -9,6 +9,10 @@ components_install() {
 default_install() {
     components_install
 
+    if [ ! -d "lib" ]; then
+        mkdir lib
+    fi
+
     if [ -d /usr/include/AceEngine ] ||
         [ -d /usr/lib/x86_64-linux-gnu/libAceEngine.so ]; then
         sudo make -f MakeFile uninstall
