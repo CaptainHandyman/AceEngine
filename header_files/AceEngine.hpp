@@ -79,18 +79,19 @@ namespace ACE
         // Checks if the current window isn't the same as another.
         bool operator!=(SDL_Window *_window);
 
-        bool /* Check for quit. */ quit(SDL_Event event),
-            /* Checks if window is open. */ is_open();
+        // Checks for quit.
+        bool quit(SDL_Event event);
 
-        /*
-         * Clear and display functions are required for drawing.
-         */
-        void clear(), display(),
-            /* Closes the window. */ close();
+        // Checks if window is open.
+        bool is_open();
 
-        /*
-         * Sets vertical sync.
-         */
+        // Clear and display functions are required for drawing.
+        void clear(), display();
+
+        // Closes the window.
+        void close();
+
+        // Sets vertical sync.
         void set_vsync(bool _bool);
 
         /*
@@ -135,14 +136,10 @@ namespace ACE
         // Sets the position.
         void set_position(vector2<float> position);
 
-        /*
-         * Translates selected point to OpenGL vertex(glVertex2f(x, y)).
-         */
+        // Translates selected point to OpenGL vertex(glVertex2f(x, y)).
         void translate_point_to_vertex(uint64_t id);
 
-        /*
-         * With show_unfilled function, you can show current polygon unfilled, with show_filled, filled.
-         */
+        // With show_unfilled function, you can show current polygon unfilled, with show_filled, filled.
         void show_unfilled(), show_filled();
 
         /*
@@ -165,7 +162,7 @@ namespace ACE
 
         // Returns the bounds.
         vector4<float> get_bounds();
-        
+
         // Returns the fill color.
         rgba_color get_fill_color();
 
