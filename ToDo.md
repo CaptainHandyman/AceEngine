@@ -20,4 +20,8 @@
 - [ ] Animation class
 - [X] Keyboard class
 - [X] Mouse class
+<<<<<<< HEAD
 - [X] Timer class
+=======
+- [X] Timer class
+>>>>>>> a3704b865b4c6900478e2eb23c91946e55055024
