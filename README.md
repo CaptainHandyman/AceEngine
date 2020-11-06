@@ -1,17 +1,10 @@
 # AceEngine
 ## Installation:
-#### Main:
 * ``` sudo apt-get update ```
 * ``` sudo apt-get install git ```
 * ``` git clone https://github.com/RedBull4/AceEngine ```
 * ``` cd AceEngine ```
-#### Default:
-* ``` sudo ./install.sh -d ```
-#### Local:
-* ``` sudo ./install.sh -l ```
-
-  Local installation only creates a ``` .so ``` file in the ``` lib ``` folder!
-#
+* ``` sudo ./install.sh -i ```
 ### Uninstallation:
 * ``` sudo ./install.sh -u ```
 ### Compilation:
