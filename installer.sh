@@ -1,9 +1,11 @@
 install_components() {
-    sudo apt-get update
-    sudo apt-get install libsdl2-dev \
-        libsdl2-image-dev \
-        libsdl2-ttf-dev \
-        mesa-common-dev g++
+    if [ ! -d "/usr/include/SDL2" ]; then
+        sudo apt-get update
+        sudo apt-get install libsdl2-dev \
+            libsdl2-image-dev \
+            libsdl2-ttf-dev \
+            mesa-common-dev g++
+    fi
 }
 
 install() {
