@@ -17,13 +17,10 @@
 
 typedef uint16_t ACE_FLAGS;
 
-namespace ACE
-{
+namespace ACE {
     // 2D vector
-    template <typename T>
-    class vector2
-    {
-    public:
+    template <typename T> class vector2 {
+      public:
         vector2();
 
         vector2(T x, T y);
@@ -34,10 +31,8 @@ namespace ACE
     };
 
     // 3D vector
-    template <typename T>
-    class vector3
-    {
-    public:
+    template <typename T> class vector3 {
+      public:
         vector3();
 
         vector3(T x, T y, T z);
@@ -48,45 +43,35 @@ namespace ACE
     };
 
     // 4D vector
-    template <typename T>
-    class vector4
-    {
-    public:
+    template <typename T> class vector4 {
+      public:
         vector4();
 
-        vector4(T x, T y,
-                T w, T h);
+        vector4(T x, T y, T w, T h);
 
-        T x = 0, y = 0,
-          w = 0, h = 0;
+        T x = 0, y = 0, w = 0, h = 0;
     };
 
     // rgba color
-    class rgba_color
-    {
-    public:
+    class rgba_color {
+      public:
         rgba_color();
 
-        rgba_color(uint16_t r, uint16_t g,
-                   uint16_t b);
+        rgba_color(uint16_t r, uint16_t g, uint16_t b);
 
-        rgba_color(uint16_t r, uint16_t g,
-                   uint16_t b, uint16_t a);
+        rgba_color(uint16_t r, uint16_t g, uint16_t b, uint16_t a);
 
-        uint16_t r = 0, g = 0,
-                 b = 0, a = 255;
+        uint16_t r = 0, g = 0, b = 0, a = 255;
     };
 
-    class screen
-    {
-    public:
+    class screen {
+      public:
         // Returns the size of your desktop.
         static vector2<uint32_t> get_size();
     };
 
-    class mouse
-    {
-    public:
+    class mouse {
+      public:
         // Checks if the left mouse button was pressed.
         static bool left_button_pressed();
 
@@ -106,9 +91,8 @@ namespace ACE
         static vector2<int> get_position();
     };
 
-    class timer
-    {
-    public:
+    class timer {
+      public:
         // Returns time in float.
         float in_milliseconds();
 
@@ -124,14 +108,13 @@ namespace ACE
         // Restarts the timer.
         void restart();
 
-    private:
+      private:
         float milliseconds = 0, a = 0;
         bool started = false;
     };
 
-    class keyboard
-    {
-    public:
+    class keyboard {
+      public:
         // Checks if key was pressed on your keyboard.
         static bool is_key_pressed(SDL_Scancode scancode);
 

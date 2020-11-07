@@ -15,17 +15,14 @@
 #include "utilities.hpp"
 #include <vector>
 
-namespace ACE
-{
-    struct window_data
-    {
+namespace ACE {
+    struct window_data {
         vector4<int> bounds;
         rgba_color fill_color;
         SDL_GLContext gl_context;
     } /* window_data */;
 
-    struct polygon_data
-    {
+    struct polygon_data {
         vector2<float> center;
         vector4<float> bounds;
         std::vector<vector2<float>> point_position;
@@ -33,18 +30,16 @@ namespace ACE
         float angle = 0;
     } /* polygon_data */;
 
-    struct texture_data
-    {
+    struct texture_data {
         SDL_Surface *sufrace;
         unsigned int id = 0;
         vector2<int> size;
         int format, parameter = GL_NEAREST;
-    } /* texture_data */ ;
+    } /* texture_data */;
 
-    struct sprite_data
-    {
+    struct sprite_data {
         vector4<float> texture_part;
-    } /* sprite_data */ ;
+    } /* sprite_data */;
 } // namespace ACE
 
 #endif // STRUCTURES_HPP

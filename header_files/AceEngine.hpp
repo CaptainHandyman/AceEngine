@@ -23,19 +23,16 @@
 // Ready-made positions
 
 // Window flags
-enum
-{
+enum {
     /* Disables all set flags */ ACE_WINDOW_NO_FLAGS = 1 << 0,
     /* Makes window fullscreen */ ACE_WINDOW_FULLSCREEN = 1 << 1,
     /* Makes window resizable */ ACE_WINDOW_RESIZABLE = 1 << 2
 };
 // Window flags
 
-namespace ACE
-{
-    class window
-    {
-    public:
+namespace ACE {
+    class window {
+      public:
         // Default constructor
         window();
 
@@ -49,12 +46,11 @@ namespace ACE
          * Creates a window, but with ready-made position,
          * for example: ACE_WINDOW_POS_CENTERED, ACE_WINDOW_POS_TOP_LEFT etc.
          */
-        void create(ACE_STRING title, uint8_t position,
-                    vector2<int> size);
+        void create(ACE_STRING title, uint8_t position, vector2<int> size);
 
         /*
-         * Sets flags, for example: ACE_WINDOW_FULLSCREEN, ACE_WINDOW_RESIZABLE etc.,
-         * but if you set ACE_WINDOW_NO_FALGS all flags will be disabled!
+         * Sets flags, for example: ACE_WINDOW_FULLSCREEN, ACE_WINDOW_RESIZABLE
+         * etc., but if you set ACE_WINDOW_NO_FALGS all flags will be disabled!
          */
         void set_flags(ACE_FLAGS window_flags);
 
@@ -98,7 +94,7 @@ namespace ACE
         /*
          * Translates the current window to the SDL2 window.
          * What for? Because if you need to set size, position or whatever,
-         * you can just type SDL_SetWindowSize(translate_to_sdl(), 1920, 1080), 
+         * you can just type SDL_SetWindowSize(translate_to_sdl(), 1920, 1080),
          * SDL_SetWindowPosition(translate_to_sdl(), 200, 200).
          */
         SDL_Window *translate_to_sdl();
@@ -112,21 +108,19 @@ namespace ACE
         // Returns the fill color of window.
         rgba_color get_fill_color();
 
-    private:
+      private:
         window_data _window_data;
 
         SDL_Window *_window;
     } /* class window */;
 
-    class polygon
-    {
-    public:
+    class polygon {
+      public:
         // Sets the count of points.
         void set_point_count(uint64_t count);
 
         // Sets the position of the point
-        void set_point_position(uint64_t id,
-                                vector2<float> position);
+        void set_point_position(uint64_t id, vector2<float> position);
 
         // Sets fill color.
         void set_fill_color(rgba_color fill_color);
@@ -140,7 +134,8 @@ namespace ACE
         // Translates selected point to OpenGL vertex(glVertex2f(x, y)).
         void translate_point_to_vertex(uint64_t id);
 
-        // With show_unfilled function, you can show current polygon unfilled, with show_filled, filled.
+        // With show_unfilled function, you can show current polygon unfilled,
+        // with show_filled, filled.
         void show_unfilled(), show_filled();
 
         /*
@@ -154,7 +149,8 @@ namespace ACE
 
         /*
          * Moves the current polygon in x and y coordinates.
-         * Note: if you disable vsync, the movement of the current polygon will be very slow.
+         * Note: if you disable vsync, the movement of the current polygon will
+         * be very slow.
          */
         void move(vector2<float> sides);
 
@@ -167,13 +163,12 @@ namespace ACE
         // Returns the fill color.
         rgba_color get_fill_color();
 
-    private:
+      private:
         polygon_data _polygon_data;
     } /* class polygon */;
 
-    class box
-    {
-    public:
+    class box {
+      public:
         // Default constructor.
         box();
 
@@ -192,7 +187,8 @@ namespace ACE
          */
         void rotate(float angle), set_rotation(float angle);
 
-        // With show_unfilled function, you can show current polygon unfilled, with show_filled, filled.
+        // With show_unfilled function, you can show current polygon unfilled,
+        // with show_filled, filled.
         void show_unfilled(), show_filled();
 
         // Squeezes current box.
@@ -210,13 +206,12 @@ namespace ACE
         // Returns the fill color.
         rgba_color get_fill_color();
 
-    private:
+      private:
         polygon _polygon;
     };
 
-    class texture
-    {
-    public:
+    class texture {
+      public:
         /*
          * Loads a texture from the specified path.
          * Formats: .png, .jpg, .jpeg, .bmp.
@@ -224,7 +219,7 @@ namespace ACE
         void load(ACE_STRING path);
 
         // Sets smoothness.
-        void set_smooth(bool _bool);    
+        void set_smooth(bool _bool);
 
         // Returns the id of current texture.
         int get_id();
@@ -238,13 +233,12 @@ namespace ACE
         // Checks if texture is smooth.
         bool smoothed();
 
-    private:
+      private:
         texture_data _texture_data;
     };
 
-    class sprite
-    {
-    public:
+    class sprite {
+      public:
         sprite();
 
         void set_texture(texture _texture);
@@ -273,7 +267,7 @@ namespace ACE
 
         rgba_color get_fill_color();
 
-    private:
+      private:
         sprite_data _sprite_data;
 
         texture _texture;
