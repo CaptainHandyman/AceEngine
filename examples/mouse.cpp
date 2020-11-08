@@ -5,20 +5,17 @@ using namespace std;
 ACE::window window;
 SDL_Event event;
 
-void print_mouse_position()
-{
+void print_mouse_position() {
     cout << "Position X: " << ACE::mouse::get_position().x << endl;
     cout << "Position Y: " << ACE::mouse::get_position().y << endl;
 }
 
-int main()
-{
-    window.create("mouse", ACE_WINDOW_POS_CENTERED, ACE::vector2<int>(800, 800));
+int main() {
+    window.create("mouse", ACE_WINDOW_POS_CENTERED,
+                  ACE::vector2<int>(800, 800));
 
-    while (window.is_open())
-    {
-        while (SDL_PollEvent(&event))
-        {
+    while (window.is_open()) {
+        while (SDL_PollEvent(&event)) {
             if (window.quit(event))
                 window.close();
 
@@ -28,18 +25,15 @@ int main()
                 cout << "Wheel scrolled down" << endl;
         }
 
-        if (ACE::mouse::left_button_pressed())
-        {
+        if (ACE::mouse::left_button_pressed()) {
             cout << "Button left was pressed!" << endl;
             print_mouse_position();
         }
-        if (ACE::mouse::right_button_pressed())
-        {
+        if (ACE::mouse::right_button_pressed()) {
             cout << "Button right was pressed!" << endl;
             print_mouse_position();
         }
-        if (ACE::mouse::middle_button_pressed())
-        {
+        if (ACE::mouse::middle_button_pressed()) {
             cout << "Button middle was pressed!" << endl;
             print_mouse_position();
         }

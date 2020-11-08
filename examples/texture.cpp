@@ -4,8 +4,7 @@ using namespace std;
 
 ACE::texture texture;
 
-int main()
-{
+int main() {
     texture.load("texture.png");
 
     cout << "Format: " << texture.get_format() << endl;

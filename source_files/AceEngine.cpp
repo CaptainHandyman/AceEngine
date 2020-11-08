@@ -559,8 +559,10 @@ void animation::play(sprite &_sprite) {
 }
 
 void animation::stop() {
-    if (_animation_data.started)
+    if (_animation_data.started) {
+        _animation_data.played_tp = 0;
         _animation_data.started = false;
+    }
 }
 
 int animation::get_tp_size() { return _animation_data.tp.size(); }

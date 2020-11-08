@@ -6,16 +6,14 @@ ACE::window window;
 ACE::timer timer;
 SDL_Event event;
 
-int main()
-{
-    window.create("timer", ACE_WINDOW_POS_CENTERED, ACE::vector2<int>(800, 800));
+int main() {
+    window.create("timer", ACE_WINDOW_POS_CENTERED,
+                  ACE::vector2<int>(800, 800));
 
     timer.start();
 
-    while (window.is_open())
-    {
-        while (SDL_PollEvent(&event))
-        {
+    while (window.is_open()) {
+        while (SDL_PollEvent(&event)) {
             if (window.quit(event))
                 window.close();
             if (event.key.keysym.scancode == SDL_SCANCODE_Q)

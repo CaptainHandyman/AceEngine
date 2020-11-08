@@ -6,8 +6,7 @@ ACE::window window;
 ACE::box box;
 SDL_Event event;
 
-int main()
-{
+int main() {
     window.create("C++", ACE_WINDOW_POS_CENTERED, ACE::vector2<int>(800, 800));
 
     box.set_size(ACE::vector2<float>(100, 100));
@@ -15,10 +14,8 @@ int main()
     box.set_position(ACE::vector2<float>(200, 200));
     box.set_scale(ACE::vector2<float>(2, 2));
 
-    while (window.is_open())
-    {
-        while (SDL_PollEvent(&event))
-        {
+    while (window.is_open()) {
+        while (SDL_PollEvent(&event)) {
             if (window.quit(event))
                 window.close();
         }
