@@ -102,10 +102,10 @@ namespace ACE {
         // Returns the OpenGL context.
         SDL_GLContext get_gl_context();
 
-        // Returns the bounds of the window.
+        // Returns the bounds (x, y, w, h).
         vector4<int> get_bounds();
 
-        // Returns the fill color of window.
+        // Returns the fill color (RGB).
         rgba_color get_fill_color();
 
       private:
@@ -157,10 +157,10 @@ namespace ACE {
         // Returns the count of points.
         uint64_t get_point_count();
 
-        // Returns the bounds.
+        // Returns the bounds (x, y, w, h).
         vector4<float> get_bounds();
 
-        // Returns the fill color.
+        // Returns the fill color (RGBA).
         rgba_color get_fill_color();
 
       private:
@@ -182,13 +182,15 @@ namespace ACE {
         void set_fill_color(rgba_color fill_color);
 
         /*
-         * With set_rotation function, you can rotate polygon only once,
+         * With set_rotation function, you can rotate box only once,
          * with rotate function, you can rotate more than once.
          */
         void rotate(float angle), set_rotation(float angle);
 
-        // With show_unfilled function, you can show current polygon unfilled,
-        // with show_filled, filled.
+        /*
+         * With show_unfilled function, you can show current polygon unfilled,
+         * with show_filled, filled.
+         */
         void show_unfilled(), show_filled();
 
         // Squeezes current box.
@@ -200,10 +202,10 @@ namespace ACE {
         // Moves the box.
         void move(vector2<float> sides);
 
-        // Returns the bounds.
+        // Returns the bounds (x, y, w, h).
         vector4<float> get_bounds();
 
-        // Returns the fill color.
+        // Returns the fill color (RGBA).
         rgba_color get_fill_color();
 
       private:
@@ -239,32 +241,52 @@ namespace ACE {
 
     class sprite {
       public:
+        // Default constructor.
         sprite();
 
+        // Sets texture.
         void set_texture(texture _texture);
 
+        // Sets size.
         void set_size(vector2<float> size);
 
+        // Sets position.
         void set_position(vector2<float> position);
 
+        /*
+         * Sets center of rotation.
+         * Default is ACE::vector2<float>(0, 0).
+         */
         void set_center(vector2<float> center);
 
+        /*
+         * With set_rotation function, you can rotate sprite only once,
+         * with rotate function, you can rotate more than once.
+         */
         void set_rotation(float angle), rotate(float angle);
 
+        // Squeezes the sprite.
         void squeeze(vector2<float> sides);
 
+        // Changes the scale of sprite.
         void set_scale(vector2<float> scale);
 
+        // Sets transparency.
         void set_transparency(int transparency);
 
+        // Sets part of texture, by default show fulls part.
         void set_texture_part(vector4<int> bounds);
 
+        // Moves the sprite.
         void move(vector2<float> sides);
 
+        // Shows the sprite.
         void show();
 
+        // Returns the bounds of the sprite (x, y, w, h).
         vector4<float> get_bounds();
 
+        // Returns the fill color (RGBA).
         rgba_color get_fill_color();
 
       private:
