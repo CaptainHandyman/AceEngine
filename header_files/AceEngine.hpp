@@ -301,16 +301,28 @@ namespace ACE {
 
     class animation {
       public:
+        /*
+         * Inserts the texture part of sprites texture.
+         * Tp means texture part.
+         */
         void insert_tp(vector4<int> bounds);
 
+        // Replaces the texture part.
         void replace_tp(int id, vector4<int> bounds);
 
+        // Sets the time stamp for the animation.
         void set_time_stamp(float milliseconds);
 
+        /*
+         * If you don't call start function, function play
+         * wont work! Stop function stops the animation.
+         */
         void start(), play(sprite &_sprite), stop();
 
+        // Returns the number of pieces of the texture.
         int get_tp_size();
 
+        // Checks if the animation has started.
         bool is_started();
 
       private:
