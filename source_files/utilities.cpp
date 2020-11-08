@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:50
  * @modify date 2020-11-05 12:08:19
- * @version 0.07
+ * @version 0.12
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -92,6 +92,8 @@ void timer::restart() {
     stop();
     start();
 }
+
+bool timer::is_started() { return started; }
 
 const Uint8 *key = SDL_GetKeyboardState(NULL);
 

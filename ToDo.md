@@ -14,10 +14,10 @@
 - [X] Polygon class
 - [X] Box class
 - [X] Texture class
-- [ ] Sprite class
+- [X] Sprite class
 - [ ] Font class
 - [ ] Text class
-- [ ] Animation class
+- [X] Animation class
 - [X] Keyboard class
 - [X] Mouse class
 - [X] Timer class

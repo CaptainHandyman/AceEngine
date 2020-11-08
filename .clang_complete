@@ -1,0 +1,4 @@
+-DDEBUG
+-include ../config.h
+-I../common
+-I/usr/include/c++/9

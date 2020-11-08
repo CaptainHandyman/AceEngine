@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
  * @modify date 2020-11-04 23:02:05
- * @version 0.07
+ * @version 0.12
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -41,6 +41,9 @@ namespace ACE {
 
         // Creates a window.
         void create(ACE_STRING title, vector4<int> bounds);
+
+        // Creates a window, but with centered position.
+        void create(ACE_STRING title, vector2<int> size);
 
         /*
          * Creates a window, but with ready-made position,
@@ -294,6 +297,26 @@ namespace ACE {
 
         texture _texture;
         polygon _polygon;
+    };
+
+    class animation {
+      public:
+        void insert_tp(vector4<int> bounds);
+
+        void replace_tp(int id, vector4<int> bounds);
+
+        void set_time_stamp(float milliseconds);
+
+        void start(), play(sprite &_sprite), stop();
+
+        int get_tp_size();
+
+        bool is_started();
+
+      private:
+        animation_data _animation_data;
+
+        timer _timer;
     };
 } // namespace ACE
 

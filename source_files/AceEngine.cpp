@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
  * @modify date 2020-11-06 09:48:26
- * @version 0.07
+ * @version 0.12
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -34,6 +34,20 @@ void window::create(ACE_STRING title, vector4<int> bounds) {
     _window_data.bounds = bounds;
 }
 
+void window::create(ACE_STRING title, vector2<int> size) {
+    _window_data.bounds.x = screen::get_size().x / 2 - size.x / 2;
+    _window_data.bounds.y = screen::get_size().y / 2 - size.y / 2;
+
+    _window =
+        SDL_CreateWindow(title, _window_data.bounds.x, _window_data.bounds.y,
+                         size.x, size.y, SDL_WINDOW_OPENGL);
+
+    _window_data.bounds.w = size.x;
+    _window_data.bounds.h = size.y;
+
+    init_gl();
+}
+
 void window::create(ACE_STRING title, uint8_t position, vector2<int> size) {
     switch (position) {
     case ACE_WINDOW_POS_CENTERED:
@@ -62,10 +76,10 @@ void window::create(ACE_STRING title, uint8_t position, vector2<int> size) {
         SDL_CreateWindow(title, _window_data.bounds.x, _window_data.bounds.y,
                          size.x, size.y, SDL_WINDOW_OPENGL);
 
-    init_gl();
-
     _window_data.bounds.w = size.x;
     _window_data.bounds.h = size.y;
+
+    init_gl();
 }
 
 void window::set_flags(ACE_FLAGS window_flags) {
@@ -509,3 +523,46 @@ void sprite::show() {
 vector4<float> sprite::get_bounds() { return _polygon.get_bounds(); }
 
 rgba_color sprite::get_fill_color() { return _polygon.get_fill_color(); }
+
+void animation::insert_tp(vector4<int> bounds) {
+    _animation_data.tp.push_back(bounds);
+}
+
+void animation::replace_tp(int id, vector4<int> bounds) {
+    _animation_data.tp.at(id) = bounds;
+}
+
+void animation::set_time_stamp(float milliseconds) {
+    _animation_data.time_stamp = milliseconds;
+}
+
+void animation::start() {
+    if (!_animation_data.started)
+        _animation_data.started = true;
+}
+
+void animation::play(sprite &_sprite) {
+    if (_animation_data.started) {
+        if (!_timer.is_started())
+            _timer.start();
+
+        if (_timer.in_milliseconds() > _animation_data.time_stamp) {
+            _sprite.set_texture_part(
+                _animation_data.tp.at(_animation_data.played_tp));
+            _animation_data.played_tp++;
+            _timer.restart();
+        }
+
+        if (_animation_data.played_tp > _animation_data.tp.size() - 1)
+            _animation_data.played_tp = 0;
+    }
+}
+
+void animation::stop() {
+    if (_animation_data.started)
+        _animation_data.started = false;
+}
+
+int animation::get_tp_size() { return _animation_data.tp.size(); }
+
+bool animation::is_started() { return _animation_data.started; }

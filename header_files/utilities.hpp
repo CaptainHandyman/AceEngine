@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
  * @modify date 2020-11-05 12:08:23
- * @version 0.07
+ * @version 0.12
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -107,6 +107,8 @@ namespace ACE {
 
         // Restarts the timer.
         void restart();
+
+        bool is_started();
 
       private:
         float milliseconds = 0, a = 0;

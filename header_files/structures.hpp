@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:19
  * @modify date 2020-11-04 01:55:34
- * @version 0.07
+ * @version 0.12
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -40,6 +40,13 @@ namespace ACE {
     struct sprite_data {
         vector4<float> texture_part;
     } /* sprite_data */;
+
+    struct animation_data {
+        float time_stamp;
+        std::vector<vector4<int>> tp;
+        int played_tp = 0;
+        bool started = false;
+    };
 } // namespace ACE
 
 #endif // STRUCTURES_HPP
