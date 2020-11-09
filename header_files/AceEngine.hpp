@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
  * @modify date 2020-11-04 23:02:05
- * @version 0.12
+ * @version 0.13
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -87,7 +87,8 @@ namespace ACE {
 
         /*
          * Clear and display functions are required for drawing.
-         * Clear and display functions should always be performed in a while loop.
+         * Clear and display functions should always be performed in a while
+         * loop.
          */
         void clear(), display();
 
@@ -145,7 +146,7 @@ namespace ACE {
         void show_unfilled(), show_filled();
 
         /*
-         * With set_rotation function, you can rotate polygon only once,
+         * With set_rotation function you can rotate polygon only once,
          * with rotate function, you can rotate more than once.
          */
         void set_rotation(float angle), rotate(float angle);
@@ -206,7 +207,7 @@ namespace ACE {
         // Sets the scale.
         void set_scale(vector2<float> scale);
 
-        /* 
+        /*
          * Moves the box.
          * Note: if you disable vsync, the movement of the current polygon will
          * be very slow.
@@ -289,7 +290,7 @@ namespace ACE {
         // Sets part of texture, by default show fulls part.
         void set_texture_part(vector4<int> bounds);
 
-        /* 
+        /*
          * Moves the sprite.
          * Note: if you disable vsync, the movement of the current polygon will
          * be very slow.
@@ -325,6 +326,8 @@ namespace ACE {
 
         // Sets the time stamp for the animation in milliseconds.
         void set_time_stamp(float milliseconds);
+
+        void erase_tp(int id);
 
         /*
          * If you don't call start function, function play

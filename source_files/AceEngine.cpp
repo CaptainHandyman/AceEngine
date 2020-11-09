@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
  * @modify date 2020-11-06 09:48:26
- * @version 0.12
+ * @version 0.13
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -534,6 +534,13 @@ void animation::replace_tp(int id, vector4<int> bounds) {
 
 void animation::set_time_stamp(float milliseconds) {
     _animation_data.time_stamp = milliseconds;
+}
+
+void animation::erase_tp(int id) {
+    std::vector<vector4<int>>::iterator tp;
+    tp = _animation_data.tp.begin() + id;
+
+    _animation_data.tp.erase(tp);
 }
 
 void animation::start() {
