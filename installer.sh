@@ -8,7 +8,7 @@ install_components() {
     fi
 }
 
-install() {
+install_engine() {
     install_components
 
     if [ ! -d "lib" ]; then
@@ -25,7 +25,7 @@ install() {
 
 while getopts 'iu' option; do
     case $option in
-    i) install ;;
+    i) install_engine ;;
     u) make -f MakeFile uninstall ;;
     esac
 done
