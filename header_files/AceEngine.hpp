@@ -85,7 +85,10 @@ namespace ACE {
         // Checks if window is open.
         bool is_open();
 
-        // Clear and display functions are required for drawing.
+        /*
+         * Clear and display functions are required for drawing.
+         * Clear and display functions should always be performed in a while loop.
+         */
         void clear(), display();
 
         // Closes the window.
@@ -187,6 +190,7 @@ namespace ACE {
         /*
          * With set_rotation function, you can rotate box only once,
          * with rotate function, you can rotate more than once.
+         * The rotate function must always be in a while loop.
          */
         void rotate(float angle), set_rotation(float angle);
 
@@ -202,7 +206,11 @@ namespace ACE {
         // Sets the scale.
         void set_scale(vector2<float> scale);
 
-        // Moves the box.
+        /* 
+         * Moves the box.
+         * Note: if you disable vsync, the movement of the current polygon will
+         * be very slow.
+         */
         void move(vector2<float> sides);
 
         // Returns the bounds (x, y, w, h).
@@ -265,6 +273,7 @@ namespace ACE {
         /*
          * With set_rotation function, you can rotate sprite only once,
          * with rotate function, you can rotate more than once.
+         * The rotate function must always be in a while loop.
          */
         void set_rotation(float angle), rotate(float angle);
 
@@ -280,7 +289,11 @@ namespace ACE {
         // Sets part of texture, by default show fulls part.
         void set_texture_part(vector4<int> bounds);
 
-        // Moves the sprite.
+        /* 
+         * Moves the sprite.
+         * Note: if you disable vsync, the movement of the current polygon will
+         * be very slow.
+         */
         void move(vector2<float> sides);
 
         // Shows the sprite.
@@ -307,15 +320,17 @@ namespace ACE {
          */
         void insert_tp(vector4<int> bounds);
 
-        // Replaces the texture part.
+        // Replaces the texture part with a new one.
         void replace_tp(int id, vector4<int> bounds);
 
-        // Sets the time stamp for the animation.
+        // Sets the time stamp for the animation in milliseconds.
         void set_time_stamp(float milliseconds);
 
         /*
          * If you don't call start function, function play
          * wont work! Stop function stops the animation.
+         * In play function, you need to specify the sprite.
+         * The play function must always be in a while loop.
          */
         void start(), play(sprite &_sprite), stop();
 
