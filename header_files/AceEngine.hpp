@@ -5,7 +5,7 @@
  * @modify date 2020-11-04 23:02:05
  * @version 0.14
  * @desc This program is free software.
- *       you can redistribute it and/or modify.
+ *       You can redistribute it and/or modify.
  */
 
 #ifndef ACEENGINE_HPP

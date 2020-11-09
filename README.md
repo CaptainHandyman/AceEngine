@@ -18,5 +18,7 @@ g++ file.cpp -lAceEngine -lSDl2 \
 * Engine path: ``` /usr/include/AceEngine ```
 * Library path: ``` /usr/x86_64-linux-gnu/libAceEngine.so ```
 ---
+This program is free software. You can redistribute it and/or modify.
+
 **Contacts:**
 * Mail: alexandralibekov@yahoo.com
