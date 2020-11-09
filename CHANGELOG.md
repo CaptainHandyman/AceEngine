@@ -4,6 +4,7 @@
 ### Updated:
 * Window class.
 * Timer class.
-# [v0.13] - 2020-11-9
+# [v0.14] - 2020-11-9
 ### Updated:
 * Animation class.
+* Polygon class.

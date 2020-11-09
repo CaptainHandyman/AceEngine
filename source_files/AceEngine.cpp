@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
  * @modify date 2020-11-06 09:48:26
- * @version 0.13
+ * @version 0.14
  * @desc This program is free software.
  *       you can redistribute it and/or modify.
  */
@@ -248,6 +248,10 @@ void polygon::begin() {
 
         glTranslatef(_polygon_data.bounds.x, _polygon_data.bounds.y, 0);
         glBegin(GL_POLYGON);
+        {
+            glColor4ub(_polygon_data.fill_color.r, _polygon_data.fill_color.g,
+                       _polygon_data.fill_color.b, _polygon_data.fill_color.a);
+        }
     }
 }
 
@@ -275,8 +279,6 @@ void polygon::show_unfilled() {
 
     begin();
     {
-        glColor4ub(_polygon_data.fill_color.r, _polygon_data.fill_color.g,
-                   _polygon_data.fill_color.b, _polygon_data.fill_color.a);
         for (int i = 0; i < _polygon_data.point_position.size(); i++)
             translate_point_to_vertex(i);
     }
@@ -292,8 +294,6 @@ void polygon::show_filled() {
 
     begin();
     {
-        glColor4ub(_polygon_data.fill_color.r, _polygon_data.fill_color.g,
-                   _polygon_data.fill_color.b, _polygon_data.fill_color.a);
         for (int i = 0; i < _polygon_data.point_position.size(); i++)
             translate_point_to_vertex(i);
     }
