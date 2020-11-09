@@ -108,6 +108,7 @@ namespace ACE {
         // Restarts the timer.
         void restart();
 
+        // Checks if the timer is started.
         bool is_started();
 
       private:
