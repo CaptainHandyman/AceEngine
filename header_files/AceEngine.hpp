@@ -327,6 +327,7 @@ namespace ACE {
         // Sets the time stamp for the animation in milliseconds.
         void set_time_stamp(float milliseconds);
 
+        // Removes part of the texture from the array.
         void erase_tp(int id);
 
         /*
