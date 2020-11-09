@@ -572,6 +572,6 @@ void animation::stop() {
     }
 }
 
-int animation::get_tp_size() { return _animation_data.tp.size(); }
+int animation::get_array_size() { return _animation_data.tp.size(); }
 
 bool animation::is_started() { return _animation_data.started; }

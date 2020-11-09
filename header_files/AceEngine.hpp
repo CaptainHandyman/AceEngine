@@ -339,7 +339,7 @@ namespace ACE {
         void start(), play(sprite &_sprite), stop();
 
         // Returns the number of pieces of the texture.
-        int get_tp_size();
+        int get_array_size();
 
         // Checks if the animation has started.
         bool is_started();

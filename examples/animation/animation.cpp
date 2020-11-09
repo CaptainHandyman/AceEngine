@@ -1,4 +1,6 @@
 #include <AceEngine/AceEngine.hpp>
+#include <iostream>
+using namespace std;
 
 ACE::window window;
 ACE::texture texture;
@@ -20,6 +22,8 @@ int main()
     animation.insert_tp(ACE::vector4<int>(0, 0, 100, 100));
     animation.insert_tp(ACE::vector4<int>(100, 0, 100, 100));
     animation.start();
+
+    cout << "Array size: " << animation.get_array_size() << endl;
 
     while(window.is_open())
     {
