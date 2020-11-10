@@ -36,8 +36,9 @@ namespace ACE {
         /*
          * Default constructor.
          * If you want to set your own position or size or anything else,
-         * you can type SDL_SetWindowSize(ACE::window::translate_to_sld(), width, height)
-         * for size, for position SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y).
+         * you can type SDL_SetWindowSize(ACE::window::translate_to_sld(),
+         * width, height) for size, for position
+         * SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y).
          */
         window();
 
@@ -350,7 +351,17 @@ namespace ACE {
         animation_data _animation_data;
 
         timer _timer;
-    };
+    } /* class animation */;
+
+    class font {
+      public:
+      private:
+    } /* class font */;
+
+    class text {
+      public:
+      private:
+    } /* class text */;
 } // namespace ACE
 
 #endif // ACEENGINE_HPP
