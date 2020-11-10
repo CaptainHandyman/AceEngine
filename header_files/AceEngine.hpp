@@ -33,7 +33,12 @@ enum {
 namespace ACE {
     class window {
       public:
-        // Default constructor
+        /*
+         * Default constructor.
+         * If you want to set your own position or size or anything else,
+         * you can type SDL_SetWindowSize(ACE::window::translate_to_sld(), width, height)
+         * for size, for position SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y).
+         */
         window();
 
         // Initializes OpenGL.
