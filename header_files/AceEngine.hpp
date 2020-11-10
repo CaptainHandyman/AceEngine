@@ -69,9 +69,6 @@ namespace ACE {
          * Sets the ready-made position, for example:
          * ACE_WINDOW_POS_CENTERED, ACE_WINDOW_POS_TOP_LEFT.
          * You can't set your own position with this function.
-         * If you want to set your own position, you need to type
-         * SDL_SetWindowPosition(ACE::window::translate_to_sdl(), x, y)
-         * or you can create a window with your own position!
          */
         void set_position(uint8_t position);
 
