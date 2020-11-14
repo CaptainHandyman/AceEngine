@@ -10,7 +10,7 @@
 * ``` sudo ./installer.sh -u ```
 ### Compilation:
 ```
-g++ file.cpp -lAceEngine -lSDl2 \
+g++ file.cpp -lAceEngine -lSDL2 \
                          -lSDL2_image \
                          -lSDL2_ttf -lGL 
 ```
