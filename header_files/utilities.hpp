@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:47:31
  * @modify date 2020-11-05 12:08:23
- * @version 0.14
+ * @version 0.15
  * @desc This program is free software.
  *       You can redistribute it and/or modify.
  */
@@ -67,7 +67,7 @@ namespace ACE {
     class screen {
       public:
         // Returns the size of your desktop.
-        static vector2<uint32_t> get_size();
+        static vector2<int> get_size();
     };
 
     class mouse {

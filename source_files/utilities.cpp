@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:50
  * @modify date 2020-11-05 12:08:19
- * @version 0.14
+ * @version 0.15
  * @desc This program is free software.
  *       Tou can redistribute it and/or modify.
  */
@@ -28,7 +28,7 @@ rgba_color::rgba_color(uint16_t r, uint16_t g, uint16_t b, uint16_t a) {
 
 SDL_DisplayMode display_mode;
 
-vector2<uint32_t> screen::get_size() {
+vector2<int> screen::get_size() {
     SDL_GetCurrentDisplayMode(0, &display_mode);
 
     return {display_mode.w, display_mode.h};

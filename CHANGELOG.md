@@ -8,3 +8,6 @@
 ### Updated:
 * Animation class.
 * Polygon class.
+# [v0.15] - 2020-11-17
+### Updated:
+* Screen class
