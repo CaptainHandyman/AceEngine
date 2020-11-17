@@ -12,6 +12,7 @@
 #define TOOLS_HPP
 
 #include "includes.hpp"
+#include <stdint.h>
 
 #define ACE_STRING const char *
 
