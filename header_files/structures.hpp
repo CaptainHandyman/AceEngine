@@ -13,6 +13,7 @@
 
 #include "includes.hpp"
 #include "utilities.hpp"
+#include <SDL2/SDL_ttf.h>
 #include <vector>
 
 namespace ACE {

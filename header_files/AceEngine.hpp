@@ -355,7 +355,13 @@ namespace ACE {
 
     class font {
       public:
+        void load(ACE_STRING path, int thickness);
+
+        TTF_Font *translate_to_sdl();
+
       private:
+        TTF_Font *font;
+
     } /* class font */;
 
     class text {

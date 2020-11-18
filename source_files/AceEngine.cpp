@@ -9,6 +9,7 @@
  */
 
 #include "../header_files/AceEngine.hpp"
+#include <SDL2/SDL_ttf.h>
 #include <stdexcept>
 using namespace ACE;
 
@@ -575,3 +576,11 @@ void animation::stop() {
 int animation::get_array_size() { return _animation_data.tp.size(); }
 
 bool animation::is_started() { return _animation_data.started; }
+
+void font::load(ACE_STRING path, int thickness) {
+    font = TTF_OpenFont(path, thickness);
+}
+
+TTF_Font *font::translate_to_sdl(){
+    return font;
+}
