@@ -11,7 +11,7 @@
 # [v0.15] - 2020-11-17
 ### Updated:
 * Screen class
-# [v0.37] - 2020-11-19
+# [v0.18] - 2020-11-19
 # Added:
 * Font class
 * Text class
