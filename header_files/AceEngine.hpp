@@ -369,7 +369,7 @@ namespace ACE {
 
         void set_font(font _font);
 
-        void set_text(ACE_STRING text);
+        void set_string(ACE_STRING text);
 
         void set_fill_color(rgba_color fill_color);
 
@@ -380,6 +380,8 @@ namespace ACE {
         void show();
 
         vector4<float> get_bounds();
+
+        ACE_STRING get_string();
 
       private:
         text_data _text_data;

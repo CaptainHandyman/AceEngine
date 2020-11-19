@@ -49,7 +49,7 @@ namespace ACE {
     };
 
     struct text_data {
-        ACE_STRING text;
+        ACE_STRING string;
         SDL_Surface *surface;
         vector4<float> bounds;
         rgba_color fill_color;

@@ -596,8 +596,8 @@ void text::set_font(font _font) {
     _text_data.build = true;
 }
 
-void text::set_text(ACE_STRING text) {
-    _text_data.text = text;
+void text::set_string(ACE_STRING text) {
+    _text_data.string = text;
 
     _text_data.build = true;
 }
@@ -631,7 +631,7 @@ void text::show() {
             _text_data.fill_color.b, _text_data.fill_color.a};
 
         _text_data.surface = TTF_RenderText_Blended(
-            _font.translate_to_sdl(), _text_data.text, fill_color);
+            _font.translate_to_sdl(), _text_data.string, fill_color);
 
         glGenTextures(1, &_text_data.id);
         glBindTexture(GL_TEXTURE_2D, _text_data.id);
@@ -680,3 +680,5 @@ void text::show() {
 }
 
 vector4<float> text::get_bounds() { return _text_data.bounds; }
+
+ACE_STRING text::get_string() { return _text_data.string; }
