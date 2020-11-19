@@ -4,8 +4,7 @@
 * ``` sudo apt-get update ```
 * ``` sudo apt-get install git ```
 * ``` git clone https://github.com/RedBull4/AceEngine ```
-* ``` cd AceEngine ```
-* ``` sudo ./configure.sh ```
+* ``` cd AceEngine && sudo ./configure.sh ```
 * ``` mkdir lib && make -f MakeFile ```
 * ``` sudo make -f MakeFile install```
 ### Uninstallation:
