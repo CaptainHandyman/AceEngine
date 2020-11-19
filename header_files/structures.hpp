@@ -48,6 +48,15 @@ namespace ACE {
         int played_tp = 0;
         bool started = false;
     };
+
+    struct text_data {
+        ACE_STRING text;
+        SDL_Surface *surface;
+        vector4<float> bounds;
+        rgba_color fill_color;
+        bool build;
+        uint id;
+    };
 } // namespace ACE
 
 #endif // STRUCTURES_HPP

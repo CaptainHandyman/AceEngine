@@ -9,7 +9,10 @@
  */
 
 #include "../header_files/AceEngine.hpp"
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_video.h>
 #include <stdexcept>
 using namespace ACE;
 
@@ -581,6 +584,91 @@ void font::load(ACE_STRING path, int thickness) {
     font = TTF_OpenFont(path, thickness);
 }
 
-TTF_Font *font::translate_to_sdl(){
-    return font;
+TTF_Font *font::translate_to_sdl() { return font; }
+
+text::text() { _polygon.set_point_count(3); }
+
+void text::set_font(font _font) {
+    this->_font = _font;
+
+    _text_data.build = true;
+}
+
+void text::set_text(ACE_STRING text) {
+    _text_data.text = text;
+
+    _text_data.build = true;
+}
+
+void text::set_fill_color(rgba_color fill_color) {
+    _text_data.fill_color = fill_color;
+
+    _text_data.build = true;
+}
+
+void text::set_size(vector2<float> size) {
+    _polygon.set_point_position(1, vector2<float>(size.x, 0));
+    _polygon.set_point_position(2, vector2<float>(size.x, size.y));
+    _polygon.set_point_position(3, vector2<float>(0, size.y));
+
+    _text_data.bounds.w = size.x;
+    _text_data.bounds.h = size.y;
+}
+
+void build_text(text_data &_text_data, font _font, polygon &_polygon) {
+    SDL_Color fill_color = {_text_data.fill_color.r, _text_data.fill_color.g,
+                            _text_data.fill_color.b, _text_data.fill_color.a};
+
+    _text_data.surface = TTF_RenderText_Solid(_font.translate_to_sdl(),
+                                              _text_data.text, fill_color);
+
+    glGenTextures(1, &_text_data.id);
+    glBindTexture(GL_TEXTURE_2D, _text_data.id);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, _text_data.surface->w,
+                 _text_data.surface->h, 0, GL_BGRA, GL_UNSIGNED_BYTE,
+                 _text_data.surface->pixels);
+
+    _polygon.set_point_position(1, vector2<float>(_text_data.surface->w, 0));
+    _polygon.set_point_position(
+        2, vector2<float>(_text_data.surface->w, _text_data.surface->h));
+    _polygon.set_point_position(3, vector2<float>(0, _text_data.surface->h));
+
+    _text_data.bounds.w = _text_data.surface->w;
+    _text_data.bounds.h = _text_data.surface->h;
+
+    SDL_FreeSurface(_text_data.surface);
+}
+
+void text::show() {
+    if (_text_data.build) {
+        build_text(_text_data, _font, _polygon);
+
+        _text_data.build = false;
+    }
+
+    glPushMatrix();
+
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glBindTexture(GL_TEXTURE_2D, _text_data.id);
+    _polygon.begin();
+    {
+        for (int i = 0; i < _polygon.get_point_count(); i++)
+            _polygon.translate_point_to_vertex(i);
+    }
+    _polygon.end();
+
+    glDisable(GL_BLEND);
+    glDisable(GL_TEXTURE_2D);
+
+    glPopMatrix();
 }

@@ -12,6 +12,7 @@
 #define TOOLS_HPP
 
 #include "includes.hpp"
+#include <SDL2/SDL_stdinc.h>
 #include <stdint.h>
 
 #define ACE_STRING const char *
@@ -58,11 +59,11 @@ namespace ACE {
       public:
         rgba_color();
 
-        rgba_color(uint16_t r, uint16_t g, uint16_t b);
+        rgba_color(Uint8 r, Uint8 g, Uint8 b);
 
-        rgba_color(uint16_t r, uint16_t g, uint16_t b, uint16_t a);
+        rgba_color(Uint8 r, Uint8 g, Uint8 b, Uint8 a);
 
-        uint16_t r = 0, g = 0, b = 0, a = 255;
+        Uint8 r = 0, g = 0, b = 0, a = 255;
     };
 
     class screen {

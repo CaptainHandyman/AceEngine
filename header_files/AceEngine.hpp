@@ -361,12 +361,27 @@ namespace ACE {
 
       private:
         TTF_Font *font;
-
     } /* class font */;
 
     class text {
       public:
+        text();
+
+        void set_font(font _font);
+
+        void set_text(ACE_STRING text);
+
+        void set_fill_color(rgba_color fill_color);
+
+        void set_size(vector2<float> size);
+
+        void show();
+
       private:
+        text_data _text_data;
+
+        polygon _polygon;
+        font _font;
     } /* class text */;
 } // namespace ACE
 

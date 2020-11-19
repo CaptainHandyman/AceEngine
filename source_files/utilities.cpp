@@ -13,13 +13,13 @@ using namespace ACE;
 
 rgba_color::rgba_color() {}
 
-rgba_color::rgba_color(uint16_t r, uint16_t g, uint16_t b) {
+rgba_color::rgba_color(Uint8 r, Uint8 g, Uint8 b) {
     this->r = r;
     this->g = g;
     this->b = b;
 }
 
-rgba_color::rgba_color(uint16_t r, uint16_t g, uint16_t b, uint16_t a) {
+rgba_color::rgba_color(Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
     this->r = r;
     this->g = g;
     this->b = b;
