@@ -12,7 +12,6 @@
 #define TOOLS_HPP
 
 #include "includes.hpp"
-#include <SDL2/SDL_stdinc.h>
 #include <stdint.h>
 
 #define ACE_STRING const char *

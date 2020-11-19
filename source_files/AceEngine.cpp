@@ -9,16 +9,15 @@
  */
 
 #include "../header_files/AceEngine.hpp"
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_opengl.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_video.h>
 #include <stdexcept>
 using namespace ACE;
 
 bool CAN_DRAW_OBJECTS = false;
 
-window::window() { SDL_Init(SDL_INIT_VIDEO); }
+window::window() {
+    SDL_Init(SDL_INIT_VIDEO);
+    TTF_Init();
+}
 
 void window::init_gl() {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -586,7 +585,10 @@ void font::load(ACE_STRING path, int thickness) {
 
 TTF_Font *font::translate_to_sdl() { return font; }
 
-text::text() { _polygon.set_point_count(3); }
+text::text() {
+    _polygon.set_point_count(3);
+    _polygon.set_fill_color(rgba_color(255, 255, 255));
+}
 
 void text::set_font(font _font) {
     this->_font = _font;
@@ -615,14 +617,21 @@ void text::set_size(vector2<float> size) {
     _text_data.bounds.h = size.y;
 }
 
+void text::set_position(vector2<float> position) {
+    _polygon.set_position(position);
+
+    _text_data.bounds.x = position.x;
+    _text_data.bounds.y = position.y;
+}
+
 void text::show() {
     if (_text_data.build) {
         SDL_Color fill_color = {
             _text_data.fill_color.r, _text_data.fill_color.g,
             _text_data.fill_color.b, _text_data.fill_color.a};
 
-        _text_data.surface = TTF_RenderText_Solid(_font.translate_to_sdl(),
-                                                  _text_data.text, fill_color);
+        _text_data.surface = TTF_RenderText_Blended(
+            _font.translate_to_sdl(), _text_data.text, fill_color);
 
         glGenTextures(1, &_text_data.id);
         glBindTexture(GL_TEXTURE_2D, _text_data.id);
@@ -636,15 +645,7 @@ void text::show() {
                      _text_data.surface->h, 0, GL_BGRA, GL_UNSIGNED_BYTE,
                      _text_data.surface->pixels);
 
-        _polygon.set_point_position(1,
-                                    vector2<float>(_text_data.surface->w, 0));
-        _polygon.set_point_position(
-            2, vector2<float>(_text_data.surface->w, _text_data.surface->h));
-        _polygon.set_point_position(3,
-                                    vector2<float>(0, _text_data.surface->h));
-
-        _text_data.bounds.w = _text_data.surface->w;
-        _text_data.bounds.h = _text_data.surface->h;
+        set_size(vector2<float>(_text_data.surface->w, _text_data.surface->h));
 
         SDL_FreeSurface(_text_data.surface);
 
@@ -661,8 +662,14 @@ void text::show() {
     glBindTexture(GL_TEXTURE_2D, _text_data.id);
     _polygon.begin();
     {
-        for (int i = 0; i < _polygon.get_point_count(); i++)
-            _polygon.translate_point_to_vertex(i);
+        glTexCoord2i(0, 0);
+        _polygon.translate_point_to_vertex(0);
+        glTexCoord2i(1, 0);
+        _polygon.translate_point_to_vertex(1);
+        glTexCoord2i(1, 1);
+        _polygon.translate_point_to_vertex(2);
+        glTexCoord2i(0, 1);
+        _polygon.translate_point_to_vertex(3);
     }
     _polygon.end();
 
@@ -671,3 +678,5 @@ void text::show() {
 
     glPopMatrix();
 }
+
+vector4<float> text::get_bounds() { return _text_data.bounds; }

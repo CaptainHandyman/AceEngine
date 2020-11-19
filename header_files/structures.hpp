@@ -13,7 +13,6 @@
 
 #include "includes.hpp"
 #include "utilities.hpp"
-#include <SDL2/SDL_ttf.h>
 #include <vector>
 
 namespace ACE {
@@ -33,7 +32,7 @@ namespace ACE {
 
     struct texture_data {
         SDL_Surface *sufrace;
-        unsigned int id = 0;
+        uint id = 0;
         vector2<int> size;
         int format, parameter = GL_NEAREST;
     } /* texture_data */;

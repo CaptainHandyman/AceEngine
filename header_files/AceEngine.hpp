@@ -375,7 +375,11 @@ namespace ACE {
 
         void set_size(vector2<float> size);
 
+        void set_position(vector2<float> position);
+
         void show();
+
+        vector4<float> get_bounds();
 
       private:
         text_data _text_data;
