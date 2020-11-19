@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:25
  * @modify date 2020-11-04 23:02:05
- * @version 0.18
+ * @version 0.2
  * @desc This program is free software.
  *       You can redistribute it and/or modify.
  */
@@ -359,8 +359,10 @@ namespace ACE {
 
         TTF_Font *translate_to_sdl();
 
+        int get_thickness();
+
       private:
-        TTF_Font *font;
+        font_data _font_data;
     } /* class font */;
 
     class text {

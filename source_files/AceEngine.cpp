@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:48
  * @modify date 2020-11-06 09:48:26
- * @version 0.18
+ * @version 0.2
  * @desc This program is free software.
  *       You can redistribute it and/or modify.
  */
@@ -580,10 +580,13 @@ int animation::get_array_size() { return _animation_data.tp.size(); }
 bool animation::is_started() { return _animation_data.started; }
 
 void font::load(ACE_STRING path, int thickness) {
-    font = TTF_OpenFont(path, thickness);
+    _font_data.font = TTF_OpenFont(path, thickness);
+    _font_data.thickness = thickness;
 }
 
-TTF_Font *font::translate_to_sdl() { return font; }
+TTF_Font *font::translate_to_sdl() { return _font_data.font; }
+
+int font::get_thickness() { return _font_data.thickness; }
 
 text::text() {
     _polygon.set_point_count(3);

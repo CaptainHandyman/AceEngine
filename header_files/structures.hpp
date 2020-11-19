@@ -3,7 +3,7 @@
  * @email alexandralibekov@yahoo.com
  * @create date 2020-10-28 14:48:19
  * @modify date 2020-11-04 01:55:34
- * @version 0.18
+ * @version 0.2
  * @desc This program is free software.
  *       You can redistribute it and/or modify.
  */
@@ -46,6 +46,11 @@ namespace ACE {
         std::vector<vector4<int>> tp;
         int played_tp = 0;
         bool started = false;
+    };
+
+    struct font_data {
+        TTF_Font *font;
+        int thickness;
     };
 
     struct text_data {
