@@ -15,8 +15,8 @@
 g++ file.cpp -lAceEngine -lSDL2 \
                          -lSDL2_image \
                          -lSDL2_ttf -lGL 
-Or see the example MakeFile ``` examples / MakeFile_examples ```.
 ```
+Or see the example MakeFile ``` examples / MakeFile_examples ```.
 ### Notes:
 * Engine path: ``` /usr/include/AceEngine ```
 * Library path: ``` /usr/x86_64-linux-gnu/libAceEngine.so ```
