@@ -4,9 +4,9 @@
 - [X] Box class
 - [X] Texture class
 - [X] Sprite class
-- [ ] Font class
-- [ ] Text class
-- [ ] Animation class
+- [X] Font class
+- [X] Text class
+- [X] Animation class
 - [X] Keyboard class
 
 **Write comments for:**
