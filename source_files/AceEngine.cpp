@@ -615,39 +615,38 @@ void text::set_size(vector2<float> size) {
     _text_data.bounds.h = size.y;
 }
 
-void build_text(text_data &_text_data, font _font, polygon &_polygon) {
-    SDL_Color fill_color = {_text_data.fill_color.r, _text_data.fill_color.g,
-                            _text_data.fill_color.b, _text_data.fill_color.a};
-
-    _text_data.surface = TTF_RenderText_Solid(_font.translate_to_sdl(),
-                                              _text_data.text, fill_color);
-
-    glGenTextures(1, &_text_data.id);
-    glBindTexture(GL_TEXTURE_2D, _text_data.id);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, _text_data.surface->w,
-                 _text_data.surface->h, 0, GL_BGRA, GL_UNSIGNED_BYTE,
-                 _text_data.surface->pixels);
-
-    _polygon.set_point_position(1, vector2<float>(_text_data.surface->w, 0));
-    _polygon.set_point_position(
-        2, vector2<float>(_text_data.surface->w, _text_data.surface->h));
-    _polygon.set_point_position(3, vector2<float>(0, _text_data.surface->h));
-
-    _text_data.bounds.w = _text_data.surface->w;
-    _text_data.bounds.h = _text_data.surface->h;
-
-    SDL_FreeSurface(_text_data.surface);
-}
-
 void text::show() {
     if (_text_data.build) {
-        build_text(_text_data, _font, _polygon);
+        SDL_Color fill_color = {
+            _text_data.fill_color.r, _text_data.fill_color.g,
+            _text_data.fill_color.b, _text_data.fill_color.a};
+
+        _text_data.surface = TTF_RenderText_Solid(_font.translate_to_sdl(),
+                                                  _text_data.text, fill_color);
+
+        glGenTextures(1, &_text_data.id);
+        glBindTexture(GL_TEXTURE_2D, _text_data.id);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, _text_data.surface->w,
+                     _text_data.surface->h, 0, GL_BGRA, GL_UNSIGNED_BYTE,
+                     _text_data.surface->pixels);
+
+        _polygon.set_point_position(1,
+                                    vector2<float>(_text_data.surface->w, 0));
+        _polygon.set_point_position(
+            2, vector2<float>(_text_data.surface->w, _text_data.surface->h));
+        _polygon.set_point_position(3,
+                                    vector2<float>(0, _text_data.surface->h));
+
+        _text_data.bounds.w = _text_data.surface->w;
+        _text_data.bounds.h = _text_data.surface->h;
+
+        SDL_FreeSurface(_text_data.surface);
 
         _text_data.build = false;
     }

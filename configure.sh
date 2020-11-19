@@ -1,4 +1,4 @@
 sudo apt-get install libsdl2-dev \
                      libsdl2-image-dev \
                      libsdl2-ttf-dev \
-                     mesa-common-dev
+                     mesa-common-dev g++
