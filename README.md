@@ -11,9 +11,10 @@
 * ``` sudo make -f MakeFile uninstall ```
 ### Compilation:
 ```
-g++ file.cpp -lAceEngine -lSDL2 \
-                         -lSDL2_image \
-                         -lSDL2_ttf -lGL 
+g++ file.cpp -lAceEngine \
+             -lSDL2 \
+             -lSDL2_image \
+             -lSDL2_ttf -lGL 
 ```
 Or see the example MakeFile ``` examples / MakeFile_examples ```.
 ### Notes:
