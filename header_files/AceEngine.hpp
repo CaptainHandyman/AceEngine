@@ -122,7 +122,7 @@ namespace ACE {
         window_data _window_data;
 
         SDL_Window *_window;
-    } /* class window */;
+    };
 
     class polygon {
       public:
@@ -175,7 +175,7 @@ namespace ACE {
 
       private:
         polygon_data _polygon_data;
-    } /* class polygon */;
+    };
 
     class box {
       public:
@@ -351,7 +351,7 @@ namespace ACE {
         animation_data _animation_data;
 
         timer _timer;
-    } /* class animation */;
+    };
 
     class font {
       public:
@@ -363,7 +363,7 @@ namespace ACE {
 
       private:
         font_data _font_data;
-    } /* class font */;
+    };
 
     class text {
       public:
@@ -390,7 +390,7 @@ namespace ACE {
 
         polygon _polygon;
         font _font;
-    } /* class text */;
+    };
 } // namespace ACE
 
 #endif // ACEENGINE_HPP

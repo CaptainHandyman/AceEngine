@@ -9,7 +9,7 @@
 - [X] Animation class
 - [X] Keyboard class
 
-**Write comments for:**
+**Write description for:**
 - [X] Window class
 - [X] Polygon class
 - [X] Box class
