@@ -1,8 +1,7 @@
 ![AceEngine_Logo](https://raw.githubusercontent.com/RedBull4/AceEngine/master/AceEngine.png)
 #
 ### Installation:
-* ``` sudo apt-get update ```
-* ``` sudo apt-get install git ```
+* ``` sudo apt-get update && sudo apt-get install git ```
 * ``` git clone https://github.com/RedBull4/AceEngine ```
 * ``` cd AceEngine && sudo ./configure.sh ```
 * ``` mkdir lib && make -f MakeFile ```
@@ -25,4 +24,3 @@ This program is free software. You can redistribute it and/or modify.
 
 **Contacts:**
 * Mail: alexandralibekov@yahoo.com
-
