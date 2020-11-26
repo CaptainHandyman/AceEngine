@@ -17,3 +17,6 @@
 * Text class
 * Struct text_data
 * Struct font_data
+# [v0.21] - 2020-11-26
+# Updated:
+* header_files/AceEngine.hpp
