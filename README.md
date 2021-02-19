@@ -19,6 +19,29 @@ Or see the example MakeFile ``` examples / MakeFile_examples ```.
 ### Notes:
 * Engine path: ``` /usr/include/AceEngine ```
 * Library path: ``` /usr/x86_64-linux-gnu/libAceEngine.so ```
+#
+```cpp
+#include <AceEngine/AceEngine.hpp>
+
+ACE::window window;
+
+SDL_Event event;
+
+int main() {
+    window.create("AceEngine", ACE_WINDOW_POS_CENTERED,
+                  ACE::vector2<int>(800, 800));
+
+    while (window.is_open()) {
+        while (SDL_PollEvent(&event)) {
+            if (window.quit(event))
+                window.close();
+        }
+
+        window.clear();
+        window.display();
+    }
+}
+```
 ---
 This program is free software. You can redistribute it and/or modify.
 
